@@ -1,0 +1,31 @@
+<?page title="Test" contentType="text/html;charset=UTF-8"?>
+<?link rel="stylesheet" href="/css/bootstrap-4.0.0-alpha.6-dist.css"?>
+<zk>
+	<vlayout height="100%" viewModel="@id('vm') @init('hello.vm.admin.indexVM')">
+		<panel vflex="1">
+			<panelchildren style="background-color: #0064ed;color:white;">
+				<hbox align="start">
+					<label value="BackEnd Panel" />
+				</hbox>
+				<!-- <hbox align="end"> -->
+				<!-- 	<label value="Hello " /> -->
+				<!-- 	<label value="Admin" /> -->
+				<!-- </hbox> -->
+			</panelchildren>
+		</panel>
+		<hlayout vflex="10">
+			<vlayout hflex="1">
+				<navbar orient="vertical">
+					<navitem label="日程表管理" />
+					<navitem label="訂單繳款管理" onClick="@command('navigate', page='q002')"/>
+					<navitem label="訂單總結" onClick="@command('navigate', page='q003')"/>
+					<navitem label="商家/商品管理" selected="true" onClick="@command('navigate', page='q001')"/>
+				</navbar>
+			</vlayout>
+			
+			<vlayout hflex="5">
+				<include src="@load(vm.currentUri)"/>
+			</vlayout>
+		</hlayout>
+	</vlayout>
+</zk>

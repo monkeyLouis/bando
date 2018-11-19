@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+		<title>Title Page</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<table class="table table-hover" border="2px">
+					<caption>會員列表</caption>
+					<thead>
+						<tr>
+							<th style="text-align: center">會員帳號</th>
+							<th style="text-align: center">會員密碼</th>
+							<th style="text-align: center">會員名稱</th>
+<!-- 							<th style="text-align: center">權限</th> -->
+							<th style="text-align: center">修改</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="data" th:each="member:${list}" style="text-align: center">
+							<td th:text="${member.memId}" class="id">A</td>
+							<td th:text="${member.memPwd}" class="pwd">B</td>
+							<td th:text="${member.memName}" class="name">C</td>
+<!-- 							<td th:each="auth:${member.userRole}" class="userRole"> -->
+<!-- 								<h4 th:text=${auth.role}></h4> -->
+<!-- 							</td> -->
+							<td><button type="button" class="btn btn-danger">修改</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript">
+		
+			$(document).ready(function(){
+				console.log("Document Ready")	
+				$(".btn").click(function(){
+					console.log("btnClick");
+					$(this).toggleClass('btn-danger btn-success');
+				
+				});
+			
+			});
+	
+		</script>
+	</body>
+</html>

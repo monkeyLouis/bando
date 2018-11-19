@@ -1,0 +1,31 @@
+<?page title="q001" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="編輯商品" border="normal"
+		viewModel="@id('vm') @init('hello.vm.admin.bd001.U001')" mode="modal" width="500px"
+		height="auto" closable="true" onCancel="@command('close')">
+		<vlayout>
+			<hlayout>
+				<vlayout hflex="1" vflex="1">
+				</vlayout>
+				<vlayout hflex="2" vflex="1">
+					<hlayout>
+						<label value="品名: " />
+						<textbox constraint="no empty" value="@bind(vm.food.f_name)" />
+					</hlayout>
+					<hlayout>
+						<label value="價格: " />
+						<intbox constraint="no empty, no negative:價格不得小於 0" value="@bind(vm.food.f_price)" />
+					</hlayout>
+				</vlayout>
+			</hlayout>
+
+			
+			<hlayout>
+				<button label="修改" class="btn btn-success" onClick="@command('update')"/>
+				<button label="取消" class="btn btn-danger" onClick="@command('close')" />
+			</hlayout>
+
+		</vlayout>
+
+	</window>
+</zk>

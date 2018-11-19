@@ -1,0 +1,32 @@
+<?page title="Test" contentType="text/html;charset=UTF-8"?>
+<?link rel="stylesheet" href="/css/bootstrap-4.0.0-alpha.6-dist.css"?>
+<zk>
+	<window title="Manage Panel" viewModel="@id('vm') @init('zk.springboot.vm.client.testVM')" >
+		<hlayout>
+			<vlayout hflex="1">
+				<listbox model="@load(vm.memListModel)" emptyMessage="查無資料">
+					<listhead>
+						<listheader label="會員名稱" align="center" />
+						<listheader label="帳號" align="center" />
+						<listheader label="密碼" align="center" />
+						<listheader label="權限" align="center" />
+					</listhead>
+					<template name="model" var="member">
+						<listitem>
+							<listcell label="${member.memName }" />
+							<listcell label="${member.memId }" />
+							<listcell label="${member.memPwd }" />
+							<listcell label="${member.memAuth }" />
+						</listitem>
+					</template>
+				</listbox>
+				
+			<separator />
+			</vlayout>
+			
+			<vlayout hflex="5">
+				<include src="@load(vm.currentUri)"/>
+			</vlayout>
+		</hlayout>
+	</window>
+</zk>

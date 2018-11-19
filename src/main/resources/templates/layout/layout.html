@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head th:replace="fregments/header :: header">
+    <title>Header</title>
+</head>
+<body>
+
+	<div th:replace="fregments/navigation :: navigation"></div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9">
+				<h1 layout:fragment="header">Hello World !!</h1>
+				<div layout:fragment="content"></div>
+			</div>
+			<div class="col-sm-3">
+				<div th:replace="fregments/sidebar :: sidebar"></div>
+			</div>
+		</div>
+	</div>
+
+	<div th:replace="fregments/footer :: footer"></div>
+
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 	<script th:inline="javascript" th:src="/js/test.js"></script> -->
+		
+	<script th:inline="javascript">
+	
+// 		for edit page
+		function setHtml(parent, pwd, name, auth){
+			$(parent).find('h5[name="memPwd"]').html(pwd);
+			$(parent).find('h5[name="memName"]').html(name);
+			$(parent).find('h5[name="memAuth"]').html(auth);
+ 		}
+ 		
+ 		function clearErr(parent) {
+ 			$(parent).find('#memPwdErr').html("");
+			$(parent).find('#memNameErr').html("");
+			$(parent).find('#memAuthErr').html("");
+ 		}
+	
+ 		$(".btn-edit").click(function(){
+ 			var btnStatus = $(this).html();
+ 			var parent = $(this).parents(".data");
+			clearErr(parent);
+			
+ 			if (btnStatus == "Edit") {
+			
+ 				$(this).toggleClass('btn-danger btn-success');
+ 				$(this).html("Save");
+ 				$(".btn").prop("disabled", true);
+ 				$(this).prop("disabled", false);
+ 				oriId = $(parent).find('h5[name="memId"]').html();
+ 				oriPwd = $(parent).find('h5[name="memPwd"]').html();
+ 				oriName = $(parent).find('h5[name="memName"]').html();
+ 				oriAuth = $(parent).find('h5[name="memAuth"]').html();
+				
+ 				$(parent).find('h5[name="memPwd"]').html("<input value='"+ oriPwd + "'>");
+ 				$(parent).find('h5[name="memName"]').html("<input value='"+ oriName + "'>");
+ 				$(parent).find('h5[name="memAuth"]').html("<input value='"+ oriAuth + "'>");
+			
+ 			} else if(btnStatus == "Save"){
+ 				var activeBtn = this;
+ 				var newPwd = $(parent).find('h5[name="memPwd"]').find("input").val();
+ 				var newName = $(parent).find('h5[name="memName"]').find("input").val();
+ 				var newAuth = $(parent).find('h5[name="memAuth"]').find("input").val();
+			
+ 				if(oriPwd == newPwd && oriName == newName && oriAuth == newAuth) {
+ 					setHtml(parent, newPwd, newName, newAuth);
+ 					$(activeBtn).toggleClass('btn-danger btn-success');
+ 					$(activeBtn).html("Edit");
+ 					$(".btn").prop("disabled", false);
+ 					alert("All Same !!");
+ 					return false;
+ 				}
+				
+//  				if(newPwd.length==0){
+//  					alert("Pwd NOT NULL!!");
+//  					$(parent).find('td[name="memPwd"]').find("input").focus();
+//  					return false;
+//  				}
+			
+//  				if(newName.length==0){
+//  					alert("Name NOT NULL!!");
+//  					$(parent).find('td[name="memName"]').find("input").focus();
+//  					return false;
+//  				}
+				
+//  				if(newAuth.length==0){
+//  					alert("Auth NOT NULL!!");
+//  					$(parent).find('td[name="memAuth"]').find("input").focus();
+//  					return false;
+//  				}
+				
+ 				var member = {};
+ 				member["memId"] = oriId;
+ 				member["memPwd"] = newPwd;
+ 				member["memName"] = newName;
+ 				member["memAuth"] = newAuth;
+				
+ 			    $.ajax({
+ 			        type: 'POST',
+ 			        contentType: "application/json",
+ 			        dataType: 'json',
+ 			        cache: false,
+ 			        url: /*[[@{/member/update}]]*/,
+ 			        data: JSON.stringify(member),
+ 			        success: function (result) {
+ 			        	console.log(result);
+ 						if (result.status == 0){
+ 			        		$(activeBtn).toggleClass('btn-danger btn-success');
+ 							$(activeBtn).html("Edit");
+ 							$(".btn").prop("disabled", false);
+ 							setHtml(parent, result.data.memPwd, result.data.memName, result.data.memAuth);
+ 			        		alert("Id: " + result.data.memId + "\nPwd: " + result.data.memPwd + "\nName: " + result.data.memName + "\nAuth: " + result.data.memAuth + "\nData Saved !!");
+ 			        	} else {
+ 			        		for(var key in result.data){
+ 			        			$(parent).find("#" + key +"Err").html(result.data[key]);
+ 			        			//	Peek Key & Value
+ 			        			//	console.log("KEY: " + key + ", VALUE: " + result.data[key] );
+ 			        		}
+ 			        	
+ 			        	//	Old Version
+//  			        	if(result.data.memPwd != undefined){
+//  			        		console.log("PWD is ERR");
+//  			        		$(parent).find("#memPwdErr").html(result.data.memPwd);
+//  			        	}
+// 			        		if(result.data.memName != undefined){
+// 			        			console.log("NAME is ERR");
+// 			        			$(parent).find("#memNameErr").html(result.data.memName);
+//  			        		}
+// 			        		if(result.data.memAuth != undefined){
+// 			        			console.log("AUTH is ERR");
+// 			        			$(parent).find("#memAuthErr").html(result.data.memAuth);
+//  			        		}
+ 			        	}
+ 			        },
+ 			        error: function (xhr, textStatus, thrownError) {
+ 			            alert(textStatus);
+ 			        }
+ 			    });
+				
+ 			}			
+			
+ 		});
+		
+// 		for sign up page
+ 		$(".btn-signUp-stop").click(function(){
+		
+ 			var id = $("input[name='id']").val();
+ 			var pwd = $("input[name='pwd']").val();
+ 			var name = $("input[name='name']").val();
+ 			var auth = $("input[name='auth']").val();
+			
+ 			if(id.length==0){
+ 				alert("Input your Account !!");
+ 				$("input[name='id']").focus();
+ 				return false;
+ 			}
+			
+ 			if(pwd.length==0){
+ 				alert("Input your Pwd !!");
+ 				$("input[name='pwd']").focus();
+ 				return false;
+ 			}
+			
+ 			if(name.length==0){
+ 				alert("Input your Name !!");
+ 				$("input[name='name']").focus();
+ 				return false;
+ 			}
+			
+ 			if(auth.length==0){
+ 				alert("Input your Auth !!");
+ 				$("input[name='auth']").focus();
+ 				return false;
+ 			}
+			
+ 			var member = {};
+ 			member["memId"] = id;
+ 			member["memPwd"] = pwd;
+ 			member["memName"] = name;
+ 			member["memAuth"] = auth;
+			
+ 			$.ajax({
+ 		        type: 'POST',
+ 		        contentType: "application/json",
+ 		        dataType: 'json',
+ 		        cache: false,
+ 		        url: /*[[@{/member/update}]]*/,
+ 		        data: JSON.stringify(member),
+ 		        success: function (result) {
+ 		        	alert("Id: " + result.memId + "\nPwd: " + result.memPwd + "\nName: " + result.memName + "\nAuth: " + result.memAuth + "\nMember Signed Up !!");
+ 		        	window.location = /*[[@{/showAll}]]*/;
+ 		        },
+ 		        error: function (xhr, textStatus, thrownError) {
+ 		            alert(textStatus);
+ 		        }
+ 		    });
+			
+ 		});
+		
+
+	</script>
+
+</body>
+</html>

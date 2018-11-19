@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
+	<head>
+		<title>Layout</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+	    	<div class="row">
+				<table border="0px" align="center">
+					<caption style="text-align:center;font-size:30px">SignUp</caption>
+					
+					<!-- show Error Outside form (Edition 1) -->
+<!-- 					<div th:if="${#fields.hasErrors('${mem.*}')}" th:errors="${mem.*}"> -->
+<!-- 					</div> -->
+					
+					<!-- show Error Outside form (Edition 2) -->
+<!-- 					<div th:if="${#fields.hasErrors('${mem.*}')}"> -->
+<!-- 						<h4 th:each="err : ${#fields.errors('${mem.*}')}" th:text="${err}">Everything is OK</h4> -->
+<!-- 					</div> -->
+									
+					<tbody>
+						<form method="post" th:action="@{/signUp}" th:object="${mem}">
+							<!-- show all Errors Inside form -->
+<!-- 							<ul th:if="${#fields.hasErrors('*')}"> -->
+<!-- 								<li th:each="err : ${#fields.allErrors()}" th:text="${err}">Everything is OK</li> -->
+<!-- 							</ul> -->
+							<tr th:if="${#fields.hasErrors('memId')}">
+								<td colspan="2" th:each="err : ${#fields.errors('memId')}" th:text="${err}" class="td-alert alert alert-danger"></td>
+							</tr>
+							<tr>
+								<td style="padding: 5px"><h5>Account: </h5></td>
+								<td><input type="text" th:field="*{memId}" /></td>
+							</tr>
+							<tr th:if="${#fields.hasErrors('memPwd')}">
+								<td colspan="2" th:each="err : ${#fields.errors('memPwd')}" th:text="${err}" class="td-alert alert alert-danger"></td>
+							</tr>
+							<tr>
+								<td style="padding: 5px"><h5>Password:  </h5></td>
+								<td><input type="password" th:field="*{memPwd}"></td>
+							</tr>
+							<tr th:if="${#fields.hasErrors('memRePwd')}">
+								<td colspan="2" th:each="err : ${#fields.errors('memRePwd')}" th:text="${err}" class="td-alert alert alert-danger"></td>
+							</tr>
+							<tr>
+								<td style="padding: 5px"><h5>Re-Password:  </h5></td>
+								<td><input type="password" th:field="*{memRePwd}"></td>
+							</tr>
+							<tr th:if="${#fields.hasErrors('memName')}">
+								<td colspan="2" th:each="err : ${#fields.errors('memName')}" th:text="${err}" class="td-alert alert alert-danger"></td>
+							</tr>
+							<tr>
+								<td style="padding: 5px"><h5>Name:  </h5></td>
+								<td><input type="text" th:field="*{memName}" /></td>
+							</tr>
+							<tr th:if="${#fields.hasErrors('memAuth')}">
+								<td colspan="2" th:each="err : ${#fields.errors('memAuth')}" th:text="${err}" class="td-alert alert alert-danger"></td>
+							</tr>
+							<tr>
+								<td style="padding: 5px"><h5>Auth:  </h5></td>
+								<td><input type="text" th:field="*{memAuth}" /></td>
+							</tr>
+							<tr>
+								<td colspan="2" style="text-align: center;">
+									<button class="btn btn-success btn-signUp">Sign Up</button>
+									<button class="btn btn-danger btn-cancel">Cancel</button>
+								</td>
+							</tr>
+						</form>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</body>
+</html>

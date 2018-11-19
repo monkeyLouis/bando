@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
+	<head>
+		<title>Layout</title>
+	</head>
+
+	<body>
+		<section layout:fragment="content">
+	    	<div class="row">
+				<table class="table table-hover" border="2px">
+					<caption style="font-size:30px">Member List</caption>
+					<thead>
+						<tr>
+							<th style="text-align: center">Account</th>
+							<th style="text-align: center">Password</th>
+							<th style="text-align: center">Name</th>
+							<th style="text-align: center">Auth</th>
+							<th style="text-align: center">Edit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="data" th:each="member:${list}" style="text-align: center">
+							<td><h5 name="memId" th:text="${member.memId}">A</h5></td>
+							<td><h5 name="memPwd" th:text="${member.memPwd}">B</h5><h6 id="memPwdErr"></h6></td>
+							<td><h5 name="memName" th:text="${member.memName}">C</h5><h6 id="memNameErr"></h6></td>
+							<td th:each="auth:${member.userRole}"><h5 name="userRole" th:text="${auth.role}">D</h5><h6 id="memAuthErr"></h6></td>
+							<td><button type="button" class="btn btn-danger btn-edit">Edit</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+		
+		<section layout:fragment="header">
+			<h1>This Text is in the content.html</h1>
+		</section>
+		
+	</body>
+	
+</html>

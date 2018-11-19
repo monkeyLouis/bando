@@ -1,0 +1,80 @@
+<?page title="q003" contentType="text/html;charset=UTF-8"?>
+<zk>
+<vlayout viewModel="@id('vm') @init('hello.vm.admin.bd003.Q003')">
+	<hlayout hflex="min">
+		<grid vflex="min">
+			<columns>
+				<column label="訂單總結查詢" />
+			</columns>
+			<rows>
+				<row>
+					<cell>
+						<label value="日期 : "/>
+						<datebox width="25%" value="@bind(vm.dateSelected)" constraint="no future: now or never" format="yyyy-MM-dd" lenient="false" compact="false" buttonVisible="true" />
+						<space />	
+						<button label="查詢" onClick="@command('query')" class="btn btn-secondary" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</hlayout>
+	
+	<hlayout>
+		<grid model="@load(vm.scheduleList)" mold="paging" pageSize="2" emptyMessage="查無資料">
+			<columns>
+				<column hflex="3" label="開始日期" align="center" />
+				<column hflex="3" label="結束日期" align="center" />
+				<column hflex="2" label="店名" align="center" />
+				<column hflex="2" label="電話" align="center" />
+				<column hflex="1" label="數量" align="center" />
+				<column hflex="1" label="總額" align="center" />
+			</columns>
+			<rows>
+				<template name="model">
+					<row onClick="@command('showOrderSummary', schelSelected=each)">
+						<cell><label value="@load(each.startDate) @converter('formatedDate',format='yyyy/MM/dd hh:mm')"/></cell>
+						<cell><label value="@load(each.endDate) @converter('formatedDate',format='yyyy/MM/dd hh:mm')" /></cell>
+						<cell><label value="@load(each.theShopOfDay.s_name)" /></cell>
+						<cell><label value="@load(each.theShopOfDay.s_phone)" /></cell>
+						<cell><label value="@load(each.totalQuantity)" /></cell>
+						<cell><label value="@load(each.totalPrice)" /></cell>
+					</row>
+				</template>
+			</rows>
+		</grid>
+	</hlayout>
+	
+	<hlayout>
+		<vlayout hflex="2">
+			<grid visible="@load(not empty vm.scheduleSelected)" model="@load(vm.orderSummaryList)" mold="paging" pageSize="3" emptyMessage="查無資料">
+				<columns>
+					<column hflex="2" label="品名" align="center" />
+					<column hflex="1" label="數量" align="center" />
+				</columns>
+				<rows>
+					<template name="model">
+						<row onClick="@command('showBooker', orderSummarySelected=each)">
+							<cell><label value="@load(each.food.f_name)" /></cell>
+							<cell><label value="@load(each.quantity)" /></cell>
+						</row>
+					</template>
+				</rows>
+			</grid>
+		</vlayout>
+		<vlayout hflex="1">
+			<grid visible="@load(not empty vm.orderSummarySelected)" model="@load(vm.bookerList)" mold="paging" pageSize="3" emptyMessage="查無資料">
+				<columns>
+					<column label="訂購人" align="center" />
+				</columns>
+				<rows>
+					<template name="model">
+						<row>
+							<cell><label value="@load(each)" /></cell>
+						</row>
+					</template>
+				</rows>
+			</grid>
+		</vlayout>
+	</hlayout>
+</vlayout>	
+</zk>

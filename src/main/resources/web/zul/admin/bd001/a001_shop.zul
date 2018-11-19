@@ -1,0 +1,36 @@
+<?page title="a001_shop" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="@load(vm.mode ? '新增店家' : '修改店家')" border="normal"
+		viewModel="@id('vm') @init('hello.vm.admin.bd001.A001_shop')" 
+		form="@id('fm') @load(vm.shop) @save(vm.shop, before='addShop') @validator(vm.validator)"
+		validationMessages="@id('vmsgs')" mode="modal" width="500px" height="auto" closable="true" onCancel="@command('close')">
+		<vlayout>
+			<hlayout>
+				<vlayout hflex="1" vflex="3">
+				</vlayout>
+				<vlayout hflex="2" vflex="3">
+					<hlayout>
+						<label value="商家名稱: " />
+						<textbox constraint="no empty" value="@bind(fm.s_name)" />
+					</hlayout>
+					<hlayout>
+						<label value="商家電話: " />
+						<textbox constraint="no empty" maxlength="10" value="@bind(fm.s_phone)" />
+						<label value="@load(vmsgs['s_phone'])" />
+					</hlayout>
+					<hlayout>
+						<label value="商家地址: " />
+						<textbox value="@bind(fm.s_addr)" />
+					</hlayout>
+				</vlayout>
+			</hlayout>
+
+			<hbox align="end" pack="end">
+				<button label="@load(vm.mode ? '新增' : '修改')" class="btn btn-success" onClick="@command('addShop')"/>
+				<button label="取消" class="btn btn-danger" onClick="@command('close')" />
+			</hbox>
+
+		</vlayout>
+
+	</window>
+</zk>

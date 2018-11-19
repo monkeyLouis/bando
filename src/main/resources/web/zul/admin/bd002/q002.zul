@@ -1,0 +1,110 @@
+<?page title="q002" contentType="text/html;charset=UTF-8"?>
+<zk>
+<vlayout viewModel="@id('vm') @init('hello.vm.admin.bd002.Q002')">
+	<hlayout hflex="min">
+		<grid vflex="min">
+			<columns>
+				<column label="訂單查詢" />
+			</columns>
+			<rows>
+				<row>
+					<cell>
+						<label value="狀態: " />
+						<combobox width="15%" readonly="true" model="@load(vm.statusList)" selectedItem="@bind(vm.statusSelected)">
+							<template name="model">
+								<comboitem label="@load(each.statusName)" />
+							</template>
+						</combobox>
+						<space />
+						<label value="日期 : " />
+						<datebox width="25%" value="@bind(vm.dateSelected)" constraint="no future: now or never" format="yyyy-MM-dd" lenient="false" compact="false" buttonVisible="true" />
+						<space />	
+						<button label="查詢" onClick="@command('query')" class="btn btn-secondary" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+	</hlayout>
+	<hlayout>
+		<vlayout hflex="2">
+			<grid mold="paging" pageSize="6" model="@load(vm.omListModel)" emptyMessage="查無資料">
+				<columns>
+					<column hflex="3" label="訂單日期" align="center" />
+					<column hflex="2" label="訂購者" align="center" />
+					<column hflex="1" label="金額" align="center" />
+					<column hflex="1" label="付款" align="center" />
+				</columns>
+				<rows>
+					<template name="model" var="om">
+						<row onClick="@command('showOmInfo', omSel=om)">
+							<cell><label value="@load(om.omDate)" /></cell>
+							<cell><label value="@load(om.member.memName)" /></cell>
+							<cell><label value="@load(om.omSum)" /></cell>
+							<cell>
+								<choose>
+									<when test="@load(om.omStatus eq 0)">
+<!-- 	 									<label sclass="badge badge-danger" value="未付款" /> -->
+	 									<button label="未付款" class="btn btn-danger btn-sm" onClick="@command('updatePay', omTarget=om)"/>
+									</when>
+									<when test="@load(om.omStatus eq 1)">
+<!-- 	 									<label sclass="badge badge-success" value="已付款" /> -->
+	 									<button label="已付款" class="btn btn-success btn-sm" onClick="@command('updatePay', omTarget=om)"/>
+									</when>
+								</choose>
+							</cell>
+						</row>
+					</template>
+				</rows>
+			</grid>
+		</vlayout>
+		<vlayout hflex="1">
+			<vbox visible="@load(not empty vm.omSel)">
+				<grid>
+					<columns>
+						<column label="訂單所屬會員資訊" />
+					</columns>
+					<rows>
+						<row>
+							<cell><label value="會員名稱" /></cell>
+							<cell><label value="@load(vm.omSel.member.memName)" /></cell>
+						</row>
+						<row>
+							<cell><label value="應付金額" /></cell>
+							<cell><label value="@load(vm.omSel.omSum)" /></cell>
+						</row>
+						<row>
+							<cell><label value="付款狀態" /></cell>
+							<choose>
+								<when test="@load(vm.omSel.omStatus eq 0)">
+	 								<button label="未付款" class="btn btn-danger btn-sm" onClick="@command('updatePay', omTarget=vm.omSel)"/>
+								</when>
+								<when test="@load(vm.omSel.omStatus eq 1)">
+	 								<button label="已付款" class="btn btn-success btn-sm" onClick="@command('updatePay', omTarget=vm.omSel)"/>
+								</when>
+							</choose>
+						</row>
+					</rows>
+				</grid>
+			</vbox>
+			<vbox visible="@load(not empty vm.omSel)">
+				<grid model="@load(vm.omSel.odList)">
+					<columns>
+						<column hflex="3" label="訂購商品名稱" />
+						<column hflex="1" label="數量" />
+						<column hflex="1" label="金額" />
+					</columns>
+					<rows>
+						<template name="model">
+							<row>
+								<cell><label value="${each.foodId.f_name }" /></cell>
+								<cell><label value="${each.odQua }" /></cell>
+								<cell><label value="${each.foodId.f_price * each.odQua }" /></cell>
+							</row>
+						</template>
+					</rows>
+				</grid>
+			</vbox>
+		</vlayout>
+	</hlayout>
+</vlayout>	
+</zk>

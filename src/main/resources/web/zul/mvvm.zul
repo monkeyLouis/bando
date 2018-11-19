@@ -1,0 +1,35 @@
+<?page title="Test" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Main Window" viewModel="@id('vm') @init('zk.springboot.viewmodel.MainViewModel')">
+		Current Time (from Spring Service):
+		<label value="@load(vm.currentTime)"/>
+		<a iconSclass="z-icon-refresh" onClick="@command('updateTime')"/>
+		<separator />
+		
+		<listbox model="@load(vm.memberModel)" emptyMessage="查無資料">
+			<listhead>
+				<listheader label="會員名稱" align="center" />
+				<listheader label="帳號" align="center" />
+				<listheader label="密碼" align="center" />
+				<listheader label="權限" align="center" />
+			</listhead>
+			<template name="model" var="member">
+				<listitem>
+					<listcell label="${member.memName }" />
+					<listcell label="${member.memId }" />
+					<listcell label="${member.memPwd }" />
+					<listcell label="${member.memAuth }" />
+				</listitem>
+			</template>
+		</listbox>
+
+		Simple MVVM-Based Sub Navigation:
+		<div>
+			<button label="sub page 1" onClick="@command('navigate', page='page1')"/>
+			<button label="sub page 2" onClick="@command('navigate', page='page2')"/>
+		</div>
+		<!-- in ZK CE version you can use the include component -->
+		<include pageModel="@load(vm.currentPage)" src="@load(vm.currentPage.uri)"/>
+		<!-- <apply templateURI="@load(vm.currentPage.uri)" pageModel="@load(vm.currentPage)"/> -->
+	</window>
+</zk>

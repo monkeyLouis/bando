@@ -1,0 +1,66 @@
+<?page title="q001" contentType="text/html;charset=UTF-8"?>
+<?link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet"?>
+<zk>
+	<vlayout viewModel="@id('vm') @init('hello.vm.admin.bd001.Q001')">
+		<grid>
+			<columns>
+				<column label="商家查詢" />
+			</columns>
+			<rows>
+				<row>
+					<cell>
+						<label value="商家名稱: " />
+						<combobox autodrop="true" model="@load(vm.shopListModel)" selectedItem="@bind(vm.shopSel)"
+							constraint="no empty" placeholder="請選擇商家" maxlength="30" vflex="true">
+							<template name="model" var="shop">
+								<comboitem label="@load(shop.s_name)" />
+							</template>
+						</combobox>
+						<button label="查詢菜單" onClick="@command('query')" class="btn btn-secondary" />
+						<space />
+						<button label="新增店家" onClick="@command('addShop')" sclass="btn btn-warning" />
+						<space />
+						<button label="檢視店家" onClick="@command('editShop')" sclass="btn btn-info" />
+					</cell>
+				</row>
+			</rows>
+		</grid>
+
+		<grid vflex="min" model="@load(vm.foodListModel)" mold="paging" pageSize="5">
+			<auxhead>
+				<auxheader align="right" colspan="6">
+					<button label="新增商品" class="btn btn-warning" onClick="@command('addFood')"/>
+				</auxheader>
+			</auxhead>
+			<columns class="table-secondary">
+				<column hflex="1" align="center" label="編號" />
+				<column hflex="3" align="center" label="品名" />
+				<column hflex="1" align="center" label="售價" />
+				<column hflex="1" align="center" label="售出總量" />
+				<column hflex="1" align="center" label="上架狀態" />
+				<column hflex="1" align="center" label="編輯" />
+			</columns>
+			<rows>
+				<template name="model">
+					<row>
+						<cell><label value="${forEachStatus.count}" /></cell>
+						<cell><label value="@load(each.f_name)" /></cell>
+						<cell><label value="@load(each.f_price)" /></cell>
+						<cell><label value="@load(each.f_count_acc)" /></cell>
+						<cell>
+							<choose>
+								<when test="@load(each.f_on eq 1)">
+									<button label="上架" class="btn btn-success" onClick="@command('changeStatus', food=each)"/>
+								</when>
+								<otherwise>
+									<button label="下架" class="btn btn-danger" onClick="@command('changeStatus', food=each)"/>
+								</otherwise>
+							</choose>
+						</cell>
+						<cell><button label="編輯" onClick="@command('editFood', food=each)" class="btn btn-info" /></cell>
+					</row>
+				</template>
+			</rows>
+		</grid>
+	</vlayout>
+</zk>
