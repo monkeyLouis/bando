@@ -72,9 +72,10 @@ public class Q003 {
 	public void showOrderSummary(@BindingParam("schelSelected") Schedule scheduleSelected) {
 		this.orderSummarySelected = null;
 		this.scheduleSelected = scheduleSelected;
-		Map<Food ,List<OrderDetail>> foodMap = scheduleSelected.getOrderMasterListOfDay().stream()
-				.flatMap(om -> om.getOdList().stream())
-				.collect(groupingBy(OrderDetail::getFoodId));
+		Map<Food ,List<OrderDetail>> foodMap = scheduleSelected.getOrderMasterListOfDay()
+															   .stream()
+															   .flatMap(om -> om.getOdList().stream())
+															   .collect(groupingBy(OrderDetail::getFoodId));
 		
 		List<OrderSummaryVo> odsList = sumTotalQuantityOfFood(foodMap);
 
@@ -90,7 +91,7 @@ public class Q003 {
 		bookerList.addAll(odrSmVo.getBookerList());
 	}
 	
-	public List<OrderSummaryVo> sumTotalQuantityOfFood(Map<Food ,List<OrderDetail>> foodMap) {
+	private List<OrderSummaryVo> sumTotalQuantityOfFood(Map<Food ,List<OrderDetail>> foodMap) {
 		List<OrderSummaryVo> result = new ArrayList<>();
 		
 		foodMap.keySet().stream().forEach(food -> {
@@ -99,7 +100,7 @@ public class Q003 {
 			element.setQuantity(sum);
 			element.setFood(food);
 			foodMap.get(food).stream().forEach(od -> {
-				element.addBooker(od.getOmId().getMember().getMemName());
+				element.addBooker(od.getOmId().getMember().getName());
 			});
 			result.add(element);
 		});

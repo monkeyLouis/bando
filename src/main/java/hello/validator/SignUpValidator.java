@@ -7,7 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import org.thymeleaf.util.StringUtils;
 
-import hello.domain.Member;
+import hello.domain.form.RegisterForm;
 import hello.repository.MemberRepository;
 
 @Component
@@ -18,27 +18,33 @@ public class SignUpValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Member.class.equals(clazz);
+		return RegisterForm.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object obj, Errors errors) {
-		ValidationUtils.rejectIfEmpty(errors, "memId", "member.memId.empty");
-		ValidationUtils.rejectIfEmpty(errors, "memPwd", "member.memPwd.empty");
-		ValidationUtils.rejectIfEmpty(errors, "memRePwd", "member.memRePwd.empty");
-		ValidationUtils.rejectIfEmpty(errors, "memName", "member.memName.empty");
-		ValidationUtils.rejectIfEmpty(errors, "memAuth", "member.memAuth.empty");
+		ValidationUtils.rejectIfEmpty(errors, "userName", "member.memId.empty");
+		ValidationUtils.rejectIfEmpty(errors, "name", "member.memName.empty");
+		ValidationUtils.rejectIfEmpty(errors, "formPassword", "member.memPwd.empty");
+		ValidationUtils.rejectIfEmpty(errors, "rePassword", "member.memRePwd.empty");
 		
+		RegisterForm form = (RegisterForm) obj;
 		
-		Member member = (Member) obj;
-		
-		if(!StringUtils.isEmpty(member.getMemRePwd()) && !StringUtils.equals(member.getMemPwd(), member.getMemRePwd())) {
-			errors.rejectValue("memRePwd", "member.memRePwd.invalid");
+		if(isPasswordBad(form.getFormPassword(), form.getRePassword())) {
+			errors.rejectValue("rePassword", "member.memRePwd.invalid");
 		}
 		
-		if(!StringUtils.isEmpty(member.getMemId()) && memberRepository.findById(member.getMemId()).isPresent()){
-			errors.rejectValue("memId", "member.memId.duplicate");
+		if(isUserNameBad(form.getUserName())){
+			errors.rejectValue("userName", "member.memId.duplicate");
 		}
 	}
-
+	
+	private boolean isPasswordBad(String psw, String rePsw) {
+		return !StringUtils.isEmpty(rePsw) && !StringUtils.equals(psw, rePsw);
+	}
+	
+	private boolean isUserNameBad(String userName) {
+		return !StringUtils.isEmpty(userName) && memberRepository.findById(userName).isPresent();		
+	}
+	
 }

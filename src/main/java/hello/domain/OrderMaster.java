@@ -30,11 +30,11 @@ public class OrderMaster implements Serializable {
 	private String omId;
 	
 	@ManyToOne
-	@JoinColumn(name="MEMID", nullable=false)
+	@JoinColumn(name="MEM_USERNAME", nullable=false)
 	private Member member;
 	
 	@ManyToOne
-	@JoinColumn(name="SCHEDULE_ID", nullable=false)
+	@JoinColumn(name="SCHEDULE_UUID", nullable=false)
 	private Schedule scheduleId;
 	
 	@Column(name="OMDATE")
@@ -47,7 +47,7 @@ public class OrderMaster implements Serializable {
 	private String omRemark;
 	
 	@OneToMany(mappedBy="omId", targetEntity=OrderDetail.class)
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@LazyCollection(LazyCollectionOption.TRUE)
 	private List<OrderDetail> odList;
 	
 	@Transient

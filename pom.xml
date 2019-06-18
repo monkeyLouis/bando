@@ -107,6 +107,12 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<!-- 編譯JSP -->
+		<dependency>
+		    <groupId>org.apache.tomcat.embed</groupId>
+		    <artifactId>tomcat-embed-jasper</artifactId>
+		    <scope>provided</scope>
+		</dependency>
         
         <!-- Hibernate-JPA -->
 		<dependency>
@@ -152,6 +158,12 @@
 		    <artifactId>joda-time</artifactId>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-logging -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
+		
 		<!-- OJDBC 6 -->
 		<dependency>
         	<groupId>oracle</groupId>
@@ -161,12 +173,29 @@
             <systemPath>${basedir}/src/main/resources/lib/ojdbc6.jar</systemPath>
         </dependency>
         
-        <!-- ZK with BootStrap -->
-		<dependency>
-  			<groupId>org.zkoss.addons</groupId>
-  			<artifactId>zk-bootstrap</artifactId>
-  			<version>1.0.0</version>
+		<!-- SPRING MAIL -->
+        <dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
+		
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+        
+		<!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-core -->
+		<dependency>
+		    <groupId>ch.qos.logback</groupId>
+		    <artifactId>logback-core</artifactId>
+		</dependency>
+        
+        <!-- ZK with BootStrap -->
+<!-- 		<dependency> -->
+<!--   			<groupId>org.zkoss.addons</groupId> -->
+<!--   			<artifactId>zk-bootstrap</artifactId> -->
+<!--   			<version>1.0.0</version> -->
+<!-- 		</dependency> -->
         
     </dependencies>
 

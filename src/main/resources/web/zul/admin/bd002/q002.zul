@@ -38,7 +38,7 @@
 					<template name="model" var="om">
 						<row onClick="@command('showOmInfo', omSel=om)">
 							<cell><label value="@load(om.omDate)" /></cell>
-							<cell><label value="@load(om.member.memName)" /></cell>
+							<cell><label value="@load(om.member.name)" /></cell>
 							<cell><label value="@load(om.omSum)" /></cell>
 							<cell>
 								<choose>
@@ -66,7 +66,7 @@
 					<rows>
 						<row>
 							<cell><label value="會員名稱" /></cell>
-							<cell><label value="@load(vm.omSel.member.memName)" /></cell>
+							<cell><label value="@load(vm.omSel.member.name)" /></cell>
 						</row>
 						<row>
 							<cell><label value="應付金額" /></cell>

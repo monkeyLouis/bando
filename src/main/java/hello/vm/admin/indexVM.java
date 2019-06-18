@@ -31,7 +31,7 @@ public class indexVM {
 		pages.put("q001", "~./zul/admin/bd001/q001.zul");
 		pages.put("q002", "~./zul/admin/bd002/q002.zul");
 		pages.put("q003", "~./zul/admin/bd003/q003.zul");
-		currentUri = pages.get("q001");
+		currentUri = pages.get("q002");
 	
 	}
 

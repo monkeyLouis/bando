@@ -12,6 +12,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import hello.domain.OrderMaster;
 import hello.domain.dto.StatusVo;
@@ -29,12 +30,14 @@ public class OrderMasterServiceImpl implements OrderMasterService {
 	private OrderMasterRepository orderMasterRepository;
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<OrderMaster> findAll() {
 		List<OrderMaster> omList = orderMasterRepository.findAll();
 		return sumTheOrder(omList);
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<OrderMaster> findByDate(Date date, StatusVo status){
 		
 		List<OrderMaster> result = orderMasterRepository.findAll((Root<OrderMaster> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
@@ -56,6 +59,7 @@ public class OrderMasterServiceImpl implements OrderMasterService {
 			return cb.conjunction();
 			
 		});
+		
 			
 		return sumTheOrder(result);
 	}
@@ -65,7 +69,7 @@ public class OrderMasterServiceImpl implements OrderMasterService {
 		return orderMasterRepository.save(om);
 	}
 	
-	public List<OrderMaster> sumTheOrder(List<OrderMaster> list) {
+	private List<OrderMaster> sumTheOrder(List<OrderMaster> list) {
 		
 		list.stream().forEach(om -> om.getOdList().stream().forEach(od -> {
 			om.setOmSum(om.getOmSum()+ od.getFoodId().getF_price() * od.getOdQua());

@@ -1,6 +1,7 @@
 package hello.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +13,7 @@ import hello.domain.Member;
 public interface MemberRepository extends JpaRepository<Member, String> {
 	
 	List<Member> findAll();
-	
-	@Query("SELECT m.memName from Member m")
+	@Query("SELECT m.username from Member m")
 	List<String> findAllName();
+	Optional<Member> findByPassword(String password); 
 }

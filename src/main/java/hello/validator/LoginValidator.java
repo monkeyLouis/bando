@@ -32,7 +32,7 @@ public class LoginValidator implements Validator {
 		LoginVo login = (LoginVo) obj;		
 		Optional<Member> loginMem = memberRepository.findById(login.getMemId());
 		if(loginMem.isPresent()) {
-			if(!StringUtils.equals(login.getMemPwd(), loginMem.get().getMemPwd())) {
+			if(!StringUtils.equals(login.getMemPwd(), loginMem.get().getPassword())) {
 				errors.rejectValue("memPwd", "login.memPwd.invalid");
 			}
 		} else if(!StringUtils.isEmpty(login.getMemId())) {

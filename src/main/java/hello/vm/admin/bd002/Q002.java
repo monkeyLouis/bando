@@ -22,7 +22,7 @@ import hello.service.OrderMasterService;
 import hello.util.BandoUtil;
 
 /**
- * 訂單付款管理 ViewModel
+ * 便當付款管理 ViewModel
  * @author Louis
  * 2018-06-13
  */
@@ -50,7 +50,7 @@ public class Q002 {
 		statusList = new ListModelList<StatusVo>(BandoUtil.getPayStatus(true));
 		statusSelected = statusList.get(0);
 		omListModel.addAll(orderMasterSrvc.findAll());
-		LOG.info("######## OrderMaster Size: " + orderMasterSrvc.findAll().size());
+		LOG.info("######## OrderMaster Size: {}", orderMasterSrvc.findAll().size());
 	}
 
 	@Command

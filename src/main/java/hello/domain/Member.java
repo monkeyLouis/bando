@@ -1,11 +1,12 @@
 package hello.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,6 +14,11 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -21,56 +27,91 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name="MEMBER")
-public class Member implements Serializable {
-
-	public Member() {}
+public class Member implements Serializable, UserDetails {
 	
 	@Id
-	@Column(name="MEMID", nullable=false)
-	private String memId;
+	@Column(name="USERNAME", nullable=false)
+	private String username;
 	
-	@Column(name="M_PWD", nullable=false)
-	private String memPwd;
+	@Column(name="PASSWORD", nullable=false)
+	private String password;
 	
-	@Transient
-	private String memRePwd;
+	@Column(name="NAME", nullable=false)
+	private String name;
 	
-	@Column(name="M_NAME", nullable=false)
-	private String memName;
+	@Column(name="ENABLED", nullable=false)
+	private Integer enabled;
 	
-	@OneToMany(mappedBy="member", targetEntity=UserRole.class)
+	@JsonIgnore
+	@OneToMany(mappedBy="roleOfMemberPk.fkMember", targetEntity=RoleOfMember.class)
 	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<UserRole> userRole;
+	private List<RoleOfMember> roleList;
 	
-	public String getMemId() {
-		return memId;
+	public Member() {}
+	
+	
+	public String getUsername() {
+		return username;
 	}
-	public void setMemId(String memId) {
-		this.memId = memId;
+	public void setUsername(String username) {
+		this.username = username;
 	}
-	public String getMemPwd() {
-		return memPwd;
+	public String getPassword() {
+		return password;
 	}
-	public void setMemPwd(String memPwd) {
-		this.memPwd = memPwd;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public String getMemRePwd() {
-		return memRePwd;
+	public String getName() {
+		return name;
 	}
-	public void setMemRePwd(String memRePwd) {
-		this.memRePwd = memRePwd;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getMemName() {
-		return memName;
+	public Integer getEnabled() {
+		return enabled;
 	}
-	public void setMemName(String memName) {
-		this.memName = memName;
+	public void setEnabled(Integer enabled) {
+		this.enabled = enabled;
 	}
-	public List<UserRole> getUserRole() {
-		return userRole;
+	public List<RoleOfMember> getRoleList() {
+		return roleList;
 	}
-	public void setUserRole(List<UserRole> userRole) {
-		this.userRole = userRole;
+	public void setRoleList(List<RoleOfMember> roleList) {
+		this.roleList = roleList;
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		this.roleList.stream().forEach(role ->{
+			authorities.add(new SimpleGrantedAuthority(role.getRoleOfMemberPk().getFkRole().getName()));
+		});
+        return authorities;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		boolean result = true;
+		if(this.enabled == 0)
+			result = false;
+		
+		return result;
+	}
+	
 }

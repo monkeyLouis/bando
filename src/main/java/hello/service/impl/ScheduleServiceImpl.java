@@ -10,8 +10,11 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import hello.domain.Schedule;
 import hello.repository.ScheduleRepository;
@@ -22,13 +25,16 @@ import hello.util.DateUtil;
 public class ScheduleServiceImpl implements ScheduleService {
 	
 	private static final String ENDDATE = "endDate";
+	private static Logger LOG = LoggerFactory.getLogger(ScheduleServiceImpl.class);
 	
 	@Autowired
 	private ScheduleRepository scheduleRepository;
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Schedule> findAll() {
 		List<Schedule> result = scheduleRepository.findAllByOrderByEndDateDesc();
+		result.forEach(r -> LOG.info("The num of list : {}", r.getOrderMasterListOfDay().size()));
 		return this.calculateTotalPriceAndTotalQuantity(result);
 	}
 

@@ -1,0 +1,164 @@
+2019-03-01 00:01:49,811 INFO  [http-nio-8080-exec-7] ShopServiceImpl: ##### List size: 28 #####
+2019-03-01 00:01:51,791 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 3
+2019-03-01 00:01:51,806 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 4
+2019-03-01 00:01:51,806 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 3
+2019-03-01 00:01:52,901 INFO  [http-nio-8080-exec-5] Q002: ######## OrderMaster Size: 10
+2019-03-01 00:03:02,311 INFO  [RMI TCP Connection(49)-127.0.0.1] SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin: Application shutdown requested.
+2019-03-01 00:03:02,325 INFO  [RMI TCP Connection(49)-127.0.0.1] AnnotationConfigServletWebServerApplicationContext: Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@21b2e768: startup date [Thu Feb 28 23:24:09 CST 2019]; root of context hierarchy
+2019-03-01 00:03:02,325 INFO  [RMI TCP Connection(49)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans on shutdown
+2019-03-01 00:03:02,325 INFO  [RMI TCP Connection(49)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans
+2019-03-01 00:03:02,325 INFO  [RMI TCP Connection(49)-127.0.0.1] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-01 00:03:02,325 INFO  [RMI TCP Connection(49)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2019-03-01 00:03:02,341 INFO  [RMI TCP Connection(49)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown completed.
+2019-03-01 00:03:10,063 INFO  [main] Application: Starting Application on LAPTOP-9H3472J4 with PID 17476 (C:\workspace\sideProj_workspace\bando\target\classes started by user in C:\workspace\sideProj_workspace\bando)
+2019-03-01 00:03:10,063 INFO  [main] Application: No active profile set, falling back to default profiles: default
+2019-03-01 00:03:10,362 INFO  [main] AnnotationConfigServletWebServerApplicationContext: Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3098cf3b: startup date [Fri Mar 01 00:03:10 CST 2019]; root of context hierarchy
+2019-03-01 00:03:12,210 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9899cc94] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,299 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$314794ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,330 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,330 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@3a2b2322' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,330 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$561c3780] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,346 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-01 00:03:12,805 INFO  [main] TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+2019-03-01 00:03:12,821 INFO  [main] Http11NioProtocol: Initializing ProtocolHandler ["http-nio-8080"]
+2019-03-01 00:03:12,836 INFO  [main] StandardService: Starting service [Tomcat]
+2019-03-01 00:03:12,836 INFO  [main] StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-03-01 00:03:12,836 INFO  [localhost-startStop-1] AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\jdk.1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/jdk.1.8.0_161/bin/../jre/bin/server;C:/jdk.1.8.0_161/bin/../jre/bin;C:/jdk.1.8.0_161/bin/../jre/lib/amd64;C:\00_tools\Xshell 6\;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\jdk.1.8.0_161\bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Apache\maven\bin;C:\Program Files\Apache\maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Python37-32\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\ProgramData\chocolatey\bin;C:\Python37-32\Scripts;C:\Ruby24-x64\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Roaming\npm;C:\Python27\;C:\Program Files\heroku\bin;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\IDE\sts-bundle\sts-4.0.1.RELEASE;;.]
+2019-03-01 00:03:13,181 INFO  [localhost-startStop-1] TldScanner: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-03-01 00:03:13,181 INFO  [localhost-startStop-1] [/]: Initializing Spring embedded WebApplicationContext
+2019-03-01 00:03:13,378 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-01 00:03:13,385 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-01 00:03:13,385 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-01 00:03:13,385 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] DelegatingFilterProxyRegistrationBean: Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'webSocketFilter' to urls: [/zkwm/*]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlLayoutServlet mapped to [*.zul]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlUpdateServlet mapped to [/zkau/*]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet cometAsyncServlet mapped to [/zkcomet/*]
+2019-03-01 00:03:13,386 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet dispatcherServlet mapped to [/]
+2019-03-01 00:03:13,402 INFO  [localhost-startStop-1] WebManager: Starting ZK 8.5.1.2 EE (build: 2018041015)
+2019-03-01 00:03:13,426 INFO  [localhost-startStop-1] ConfigParser: Loading system default
+2019-03-01 00:03:13,477 INFO  [localhost-startStop-1] ConfigParser: Parsing file:/C:/workspace/sideProj_workspace/bando/target/classes/metainfo/zk/zk.xml
+2019-03-01 00:03:13,477 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zul/8.5.1.2-Eval/zul-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-03-01 00:03:13,493 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkex/8.5.1.2-Eval/zkex-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-03-01 00:03:13,508 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkmax/8.5.1.2-Eval/zkmax-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-03-01 00:03:13,899 ERROR [localhost-startStop-1] global: This is an evaluation copy of ZK EE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK EE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+2019-03-01 00:03:14,284 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2019-03-01 00:03:14,773 INFO  [main] PoolBase: HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-03-01 00:03:14,789 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2019-03-01 00:03:14,836 INFO  [main] LocalContainerEntityManagerFactoryBean: Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-03-01 00:03:14,852 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-03-01 00:03:14,975 INFO  [main] Version: HHH000412: Hibernate Core {5.2.17.Final}
+2019-03-01 00:03:14,975 INFO  [main] Environment: HHH000206: hibernate.properties not found
+2019-03-01 00:03:15,053 INFO  [main] Version: HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-03-01 00:03:15,283 INFO  [main] Dialect: HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2019-03-01 00:03:15,393 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@62d1dc3c
+2019-03-01 00:03:15,393 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@62d1dc3c
+2019-03-01 00:03:15,393 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@18539cb1
+2019-03-01 00:03:15,393 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@18539cb1
+2019-03-01 00:03:15,632 WARN  [main] UUIDHexGenerator: HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-03-01 00:03:15,679 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.RoleOfMemberPK
+2019-03-01 00:03:15,679 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.RoleOfMemberPK
+2019-03-01 00:03:15,679 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.UrlAuthPK
+2019-03-01 00:03:15,679 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.UrlAuthPK
+2019-03-01 00:03:16,054 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-03-01 00:03:16,331 INFO  [main] RoleCache: ========!! Fetch All Role Object to Cache !!========
+2019-03-01 00:03:16,820 INFO  [main] UrlAccessCache: ========!! Init/Refresh Admin's AccessableUrl !!========
+2019-03-01 00:03:16,820 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-03-01 00:03:16,852 INFO  [main] QueryTranslatorFactoryInitiator: HHH000397: Using ASTQueryTranslatorFactory
+2019-03-01 00:03:17,019 INFO  [main] UrlAccessCache: Admin Content: /403
+2019-03-01 00:03:17,019 INFO  [main] UrlAccessCache: Admin Content: /admin
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Admin Content: /index
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: ========!! Init/Refresh User's AccessableUrl !!========
+2019-03-01 00:03:17,035 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: User Content: /403
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: User Content: /index
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: ========!! Init/Refresh Guest's AccessableUrl !!========
+2019-03-01 00:03:17,035 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /403
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /addMock
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /addMocks
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /forgot
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /login
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /refresh
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: Guest Content: /signUp
+2019-03-01 00:03:17,035 INFO  [main] UrlAccessCache: ========!! Init/Refresh All Role's AccessableUrl are DONE!!========
+2019-03-01 00:03:17,642 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/403'], []
+2019-03-01 00:03:17,642 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/forgot'], []
+2019-03-01 00:03:17,653 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/turnUp**'], []
+2019-03-01 00:03:17,653 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/video/**'], []
+2019-03-01 00:03:17,653 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/favicon.ico'], []
+2019-03-01 00:03:17,653 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/zkau/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/webjars/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/resources/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/static/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/css/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/js/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/images/**'], []
+2019-03-01 00:03:17,654 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-03-01 00:03:17,733 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@bfe47a8, org.springframework.security.web.context.SecurityContextPersistenceFilter@67941d, org.springframework.security.web.header.HeaderWriterFilter@9e62fb, org.springframework.security.web.authentication.logout.LogoutFilter@192b472d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@ec5f944, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@18dd7767, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6fde6f05, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@73b74615, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2f1f9515, org.springframework.security.web.session.SessionManagementFilter@43c0c13a, org.springframework.security.web.access.ExceptionTranslationFilter@42cc5460, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@266da047]
+2019-03-01 00:03:18,061 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-03-01 00:03:18,698 INFO  [main] AnnotationMBeanExporter: Registering beans for JMX exposure on startup
+2019-03-01 00:03:18,711 INFO  [main] AnnotationMBeanExporter: Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-03-01 00:03:18,711 INFO  [main] AnnotationMBeanExporter: Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-03-01 00:03:18,727 INFO  [main] Http11NioProtocol: Starting ProtocolHandler ["http-nio-8080"]
+2019-03-01 00:03:18,727 INFO  [main] NioSelectorPool: Using a shared selector for servlet write/read
+2019-03-01 00:03:18,758 INFO  [main] TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+2019-03-01 00:03:18,758 INFO  [main] Application: Started Application in 9.086 seconds (JVM running for 10.57)
+2019-03-01 00:03:34,360 INFO  [http-nio-8080-exec-2] [/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-01 00:03:34,408 INFO  [http-nio-8080-exec-2] RESTAuthenticationEntryPoint: ########## IN RESTAuthenticationEntryPoint.commence() ##########
+2019-03-01 00:03:34,408 INFO  [http-nio-8080-exec-2] RESTAuthenticationEntryPoint: :::::::::: NO AUTH, redirect to login ::::::::::
+2019-03-01 00:03:34,416 INFO  [http-nio-8080-exec-3] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-03-01 00:03:34,416 INFO  [http-nio-8080-exec-3] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /403
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /addMock
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /addMocks
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /forgot
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /login
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /refresh
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: /signUp
+2019-03-01 00:03:34,428 INFO  [http-nio-8080-exec-3] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-03-01 00:03:49,315 INFO  [http-nio-8080-exec-6] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-03-01 00:03:49,315 INFO  [http-nio-8080-exec-6] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-03-01 00:03:49,319 INFO  [http-nio-8080-exec-6] UrlVoter: ADD ROLE_USER Accessable Url
+2019-03-01 00:03:49,319 INFO  [http-nio-8080-exec-6] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: /403
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: /admin
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: /index
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: /403
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: /index
+2019-03-01 00:03:49,323 INFO  [http-nio-8080-exec-6] UrlVoter: ~~~~~~~ /admin ~~~~~~~
+2019-03-01 00:03:49,639 INFO  [http-nio-8080-exec-6] Q002: ######## OrderMaster Size: 10
+2019-03-01 00:03:49,663 INFO  [http-nio-8080-exec-6] LabelLoaderImpl: Loading labels for zh_TW
+2019-03-01 00:03:49,663 INFO  [http-nio-8080-exec-6] LabelLoaderImpl: Loading labels for zh
+2019-03-01 00:03:50,207 INFO  [http-nio-8080-exec-8] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-03-01 00:03:50,207 INFO  [http-nio-8080-exec-8] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-03-01 00:03:50,211 INFO  [http-nio-8080-exec-8] UrlVoter: ADD ROLE_USER Accessable Url
+2019-03-01 00:03:50,211 INFO  [http-nio-8080-exec-8] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: /403
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: /admin
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: /index
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: /403
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: /index
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] UrlVoter: ~~~~~~~ /zkwm ~~~~~~~
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] DenyAccessHandler: ### In DenyAccessHandler.handle() ###
+2019-03-01 00:03:50,215 INFO  [http-nio-8080-exec-8] DenyAccessHandler: ### User 'peter' attempted to access the protected URL: /zkwm ###
+2019-03-01 00:03:57,280 INFO  [http-nio-8080-exec-9] ScheduleServiceImpl: The num of list : 3
+2019-03-01 00:03:57,284 INFO  [http-nio-8080-exec-9] ScheduleServiceImpl: The num of list : 4
+2019-03-01 00:03:57,284 INFO  [http-nio-8080-exec-9] ScheduleServiceImpl: The num of list : 3
+2019-03-01 00:03:58,377 INFO  [http-nio-8080-exec-1] Q002: ######## OrderMaster Size: 10
+2019-03-01 00:04:22,968 INFO  [http-nio-8080-exec-4] Q002: ######## in showOmInfo ########
+2019-03-01 00:04:24,963 INFO  [http-nio-8080-exec-6] Q002: ######## in showOmInfo ########
+2019-03-01 00:04:28,568 INFO  [http-nio-8080-exec-7] Q002: ######## in showOmInfo ########
+2019-03-01 00:04:29,750 INFO  [http-nio-8080-exec-8] Q002: ######## in showOmInfo ########
+2019-03-01 00:04:31,439 INFO  [http-nio-8080-exec-9] Q002: ######## in showOmInfo ########
+2019-03-01 00:04:32,858 INFO  [http-nio-8080-exec-10] Q002: ######## in showOmInfo ########
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin: Application shutdown requested.
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] AnnotationConfigServletWebServerApplicationContext: Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@3098cf3b: startup date [Fri Mar 01 00:03:10 CST 2019]; root of context hierarchy
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans on shutdown
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-03-01 00:17:33,412 INFO  [RMI TCP Connection(22)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2019-03-01 00:17:33,450 INFO  [RMI TCP Connection(22)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown completed.

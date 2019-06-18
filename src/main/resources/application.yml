@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:oracle:thin:@localhost:1521:xe
-    username: bando
-    password: bando
+    username: BANDONEW
+    password: BANDONEW
     driver-class-name: oracle.jdbc.OracleDriver
 
   jpa: 
@@ -29,4 +29,23 @@ spring:
     view-names: jsp/*
     contentType: text/html; charset=utf-8
     
-  
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wooya617@gmail.com
+    password: Iamwooya@gmail
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  messages:    basename: messages
+    encoding: UTF-8
+    cache-duration: 1800
+
+logging:
+  level:
+    org.springframework.web: ERROR
+    hello: INFO
+    

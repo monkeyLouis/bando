@@ -12,7 +12,7 @@ import org.zkoss.zkplus.spring.DelegatingVariableResolver;
 import org.zkoss.zul.ListModelList;
 
 import hello.domain.Member;
-import hello.service.MemberService;
+import hello.service.UserService;
 
 
 /**
@@ -26,7 +26,7 @@ public class testVM {
 	private static final Logger LOG = LoggerFactory.getLogger(testVM.class);
 	
 	@WireVariable
-	private MemberService memSrvc;
+	private UserService userSrvc;
 	
 	private ListModelList<Member> memListModel = new ListModelList<>();
 	
@@ -36,7 +36,7 @@ public class testVM {
 	@Init
 	public void init() {
 		
-		memListModel.addAll(memSrvc.findAll());
+		memListModel.addAll(userSrvc.findAll());
 		pages.put("q001", "~./zul/admin/bd001/q001.zul");
 		currentUri = pages.get("q001");
 	

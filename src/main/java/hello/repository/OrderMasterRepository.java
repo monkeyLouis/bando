@@ -14,7 +14,7 @@ public interface OrderMasterRepository extends JpaRepository<OrderMaster, String
 	
 	List<OrderMaster> findAll();
 	
-	@Query("SELECT om.member.memName from OrderMaster om")
+	@Query("SELECT om.member.username from OrderMaster om")
 	List<String> findAllOmName();
 	
 }

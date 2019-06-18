@@ -3,17 +3,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head th:fragment="header">
-		<meta charset="utf-8"/>
+		<meta charset="utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
 		<title>Header</title>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
 
 		<style>
-	        body {
-	            padding-top: 50px;
-	        }
-        
+			@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+			body {
+				background: #eee;
+				padding-top: 50px;
+				overflow-x: hidden !important;
+			}
+			
 	        .footer-text {
 	        	color:#aaa;
 	        	font-size:20px;
@@ -23,25 +26,225 @@
 	        footer {
 				background-color:#000;
 				height:7%;
-	        	position: absolute;
+	        	position: relative;
 				right: 0;
 				bottom: 0;
 				left: 0;
 	        }
-	        
-	        .td-alert {
-	        	padding: 0px;
-	        	text-align: center;
-	        }
-	        
-	        h6 {
-	        	margin: 0px;
-	        	color: red;
-	        	font-weight: bold;
-	        }
+			
+			.btn-primary:hover, .btn-primary:focus {
+			    background-color: #108d6f;
+			    border-color: #108d6f;
+			    box-shadow: none;
+			    outline: none;
+			}
+			
+			.btn-primary {
+			    color: #fff;
+			    background-color: #007b5e;
+			    border-color: #007b5e;
+			}
+			
+			section {
+			    padding: 60px 0;
+			}
+			
+			section .section-title {
+			    text-align: center;
+			    color: #007b5e;
+			    margin-bottom: 50px;
+			    text-transform: uppercase;
+			}
+			
+			#team .card {
+			    border: none;
+			    /*background: #ffffff;*/
+			    padding-top: 30px;
+			    padding-bottom: 30px;
+			}
+			
+			.image-flip:hover .backside, .image-flip.hover .backside {
+			    -webkit-transform: rotateY(0deg);
+			    -moz-transform: rotateY(0deg);
+			    -o-transform: rotateY(0deg);
+			    -ms-transform: rotateY(0deg);
+			    transform: rotateY(0deg);
+			    border-radius: .25rem;
+			}
+			
+			.image-flip:hover .frontside, .image-flip.hover .frontside {
+			    -webkit-transform: rotateY(180deg);
+			    -moz-transform: rotateY(180deg);
+			    -o-transform: rotateY(180deg);
+			    transform: rotateY(180deg);
+			}
+			
+			.mainflip {
+			    -webkit-transition: 1s;
+			    -webkit-transform-style: preserve-3d;
+			    -ms-transition: 1s;
+			    -moz-transition: 1s;
+			    -moz-transform: perspective(1000px);
+			    -moz-transform-style: preserve-3d;
+			    -ms-transform-style: preserve-3d;
+			    transition: 1s;
+			    transform-style: preserve-3d;
+			    position: relative;
+			}
+			
+			.frontside {
+			    position: relative;
+			    -webkit-transform: rotateY(0deg);
+			    -ms-transform: rotateY(0deg);
+			    z-index: 2;
+			    margin-bottom: 30px;
+			}
+			
+			.backside {
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    -webkit-transform: rotateY(-180deg);
+			    -moz-transform: rotateY(-180deg);
+			    -o-transform: rotateY(-180deg);
+			    -ms-transform: rotateY(-180deg);
+			    transform: rotateY(-180deg);
+			    width: 100%;
+			}
+			
+			.frontside, .backside {
+			    -webkit-backface-visibility: hidden;
+			    -moz-backface-visibility: hidden;
+			    -ms-backface-visibility: hidden;
+			    backface-visibility: hidden;
+			    -webkit-transition: 1s;
+			    -webkit-transform-style: preserve-3d;
+			    -moz-transition: 1s;
+			    -moz-transform-style: preserve-3d;
+			    -o-transition: 1s;
+			    -o-transform-style: preserve-3d;
+			    -ms-transition: 1s;
+			    -ms-transform-style: preserve-3d;
+			    transition: 1s;
+			    transform-style: preserve-3d;
+			    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+			    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+			    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+			    border-radius: 10px;
+			}
+			
+			.frontside .card, .backside .card {
+			    min-height: 330px;
+			    border-radius: 10px;
+			}
+			
+			.backside .card a {
+			    font-size: 18px;
+			    color: #007b5e !important;
+			}
+			
+			.text-center .row {
+			   margin-right: 0px; 
+			   margin-left: 0px; 
+			}
+			
+			.priceCircle {
+			  	border-radius: 50%;
+			   	width: 200px;
+			   	height: 200px;
+			   	padding: 8px;
+			   	padding-top: 53px;
+			   	background: #DE7047;
+			  	border: 2px solid #DE7047;
+			   	color: #fff;
+			   	text-align: center;
+			   	font: 75px Arial, sans-serif;
+			}
+			
+			.align-center {
+			   	margin: 0;
+			   	position: absolute;
+			   	top: 50%;
+			   	-ms-transform: translateY(-50%);
+			   	transform: translateY(-50%);
+			   	text-align: center
+			}
+
+			.frontside .card {
+				background-color: #FFDE8D;
+				color: #DE7047;
+				font-family: "Microsoft JhengHei";
+			}
+
+			.backside .card {
+				background-color: #DE7047;
+				color: #FFDE8D;
+				font-family: "Microsoft JhengHei";
+			}
+
+			/* nav-bar */
+			.navbar-custom {
+				background-color: #528540;
+    			border-color: #528540;
+			}
+
+			.navbar-custom .navbar-nav>li>a {
+				color: #FFFFFF;
+			}
+
+			.navbar-custom .navbar-brand {
+				color: #FFFFFF;
+			}
+
+			.navbar-nav-custom>li>.dropdown-menu {
+				background-color: #528540;
+			}
+
+			.navbar-nav-custom>li>.dropdown-menu>li>a {
+				color: #FFFFFF;
+			}
+
+			.navbar-custom .navbar-nav>.open>a:hover,.navbar-custom .navbar-nav>.open>a {
+   				color: #FFFFFF;
+			    background-color: #385A2C;
+			}
+
+			.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+				color: none;
+			}
+
+			.dropdown-menu>li>a:hover {
+				background-color: #528540;
+			}
+
+			.status-panel {
+				margin: 4vh;
+			}
+
+			.status-panel .panel-body {
+				padding: 50px;
+				box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+			}
+
+			.today-eat, .store-name, .count-down {
+				font-family: "Microsoft JhengHei";
+				text-align: center;
+				margin-top: 10px;
+			}
+
+			.time-prefix, .time-subfix {
+				font-size: 20px;
+			}
+
+			.store-name {
+				font-weight: bold;
+				font-size: 50px;
+			}
+
+			.count-down {
+				font-size: 50px;
+			}
 	        
     	</style>
-
 	</head>
-
 </html>

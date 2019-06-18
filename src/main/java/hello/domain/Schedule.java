@@ -23,7 +23,7 @@ public class Schedule {
 	@Id
 	@GenericGenerator(name="sequence_sch_id", strategy="hello.domain.generator.ScheduleGen")
 	@GeneratedValue(generator="sequence_sch_id")
-	@Column(name="SCHEDULE_ID")
+	@Column(name="UUID")
 	private String scheduleId;
 	
 	@Column(name="SCHE_START_DATE")
@@ -36,7 +36,7 @@ public class Schedule {
 	@JoinColumn(name="SHOPID", nullable=false)
 	private Shop theShopOfDay;
 	
-	@OneToMany(mappedBy="scheduleId", fetch=FetchType.EAGER, targetEntity=OrderMaster.class)
+	@OneToMany(mappedBy="scheduleId", fetch=FetchType.LAZY, targetEntity=OrderMaster.class)
 	private List<OrderMaster> orderMasterListOfDay;
 	
 	@Transient

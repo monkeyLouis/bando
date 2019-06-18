@@ -1,0 +1,593 @@
+2019-02-28 23:14:33,233 INFO  [main] Application: Starting Application on LAPTOP-9H3472J4 with PID 9100 (C:\workspace\sideProj_workspace\bando\target\classes started by user in C:\workspace\sideProj_workspace\bando)
+2019-02-28 23:14:33,237 INFO  [main] Application: No active profile set, falling back to default profiles: default
+2019-02-28 23:14:33,678 INFO  [main] AnnotationConfigServletWebServerApplicationContext: Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@37858383: startup date [Thu Feb 28 23:14:33 CST 2019]; root of context hierarchy
+2019-02-28 23:14:39,323 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$75f00ed5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:39,488 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$e9dd70f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:39,509 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:39,514 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6fd5717c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:39,534 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$337279c1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:39,565 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:14:40,569 INFO  [main] TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+2019-02-28 23:14:40,607 INFO  [main] Http11NioProtocol: Initializing ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:14:40,631 INFO  [main] StandardService: Starting service [Tomcat]
+2019-02-28 23:14:40,634 INFO  [main] StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-28 23:14:40,644 INFO  [localhost-startStop-1] AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\jdk.1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/jdk.1.8.0_161/bin/../jre/bin/server;C:/jdk.1.8.0_161/bin/../jre/bin;C:/jdk.1.8.0_161/bin/../jre/lib/amd64;C:\00_tools\Xshell 6\;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\jdk.1.8.0_161\bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Apache\maven\bin;C:\Program Files\Apache\maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Python37-32\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\ProgramData\chocolatey\bin;C:\Python37-32\Scripts;C:\Ruby24-x64\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Roaming\npm;C:\Python27\;C:\Program Files\heroku\bin;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\IDE\sts-bundle\sts-4.0.1.RELEASE;;.]
+2019-02-28 23:14:41,132 INFO  [localhost-startStop-1] TldScanner: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-28 23:14:41,137 INFO  [localhost-startStop-1] [/]: Initializing Spring embedded WebApplicationContext
+2019-02-28 23:14:41,504 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-28 23:14:41,505 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-28 23:14:41,506 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-28 23:14:41,507 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-28 23:14:41,509 INFO  [localhost-startStop-1] DelegatingFilterProxyRegistrationBean: Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-28 23:14:41,509 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'webSocketFilter' to urls: [/zkwm/*]
+2019-02-28 23:14:41,510 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlLayoutServlet mapped to [*.zul]
+2019-02-28 23:14:41,511 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlUpdateServlet mapped to [/zkau/*]
+2019-02-28 23:14:41,512 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet cometAsyncServlet mapped to [/zkcomet/*]
+2019-02-28 23:14:41,512 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet dispatcherServlet mapped to [/]
+2019-02-28 23:14:41,545 INFO  [localhost-startStop-1] WebManager: Starting ZK 8.5.1.2 EE (build: 2018041015)
+2019-02-28 23:14:41,559 INFO  [localhost-startStop-1] ConfigParser: Loading system default
+2019-02-28 23:14:41,668 INFO  [localhost-startStop-1] ConfigParser: Parsing file:/C:/workspace/sideProj_workspace/bando/target/classes/metainfo/zk/zk.xml
+2019-02-28 23:14:41,671 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zul/8.5.1.2-Eval/zul-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:14:41,683 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkex/8.5.1.2-Eval/zkex-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:14:41,690 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkmax/8.5.1.2-Eval/zkmax-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:14:42,190 ERROR [localhost-startStop-1] global: This is an evaluation copy of ZK EE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK EE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+2019-02-28 23:14:42,755 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2019-02-28 23:14:43,552 INFO  [main] PoolBase: HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-02-28 23:14:43,557 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2019-02-28 23:14:43,687 INFO  [main] LocalContainerEntityManagerFactoryBean: Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:14:43,717 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-28 23:14:43,979 INFO  [main] Version: HHH000412: Hibernate Core {5.2.17.Final}
+2019-02-28 23:14:43,981 INFO  [main] Environment: HHH000206: hibernate.properties not found
+2019-02-28 23:14:44,054 INFO  [main] Version: HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-02-28 23:14:44,327 INFO  [main] Dialect: HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2019-02-28 23:14:44,460 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@314b9e4b
+2019-02-28 23:14:44,460 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@314b9e4b
+2019-02-28 23:14:44,462 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@688a2c09
+2019-02-28 23:14:44,462 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@688a2c09
+2019-02-28 23:14:44,789 WARN  [main] UUIDHexGenerator: HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-02-28 23:14:44,855 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:14:44,855 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:14:44,857 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:14:44,858 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:14:45,673 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:14:46,141 INFO  [main] RoleCache: ========!! Fetch All Role Object to Cache !!========
+2019-02-28 23:14:46,653 INFO  [main] UrlAccessCache: ========!! Init/Refresh Admin's AccessableUrl !!========
+2019-02-28 23:14:46,653 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:14:46,675 INFO  [main] QueryTranslatorFactoryInitiator: HHH000397: Using ASTQueryTranslatorFactory
+2019-02-28 23:14:47,119 INFO  [main] UrlAccessCache: Admin Content: /403
+2019-02-28 23:14:47,119 INFO  [main] UrlAccessCache: Admin Content: /admin
+2019-02-28 23:14:47,119 INFO  [main] UrlAccessCache: Admin Content: /index
+2019-02-28 23:14:47,120 INFO  [main] UrlAccessCache: ========!! Init/Refresh User's AccessableUrl !!========
+2019-02-28 23:14:47,120 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:14:47,125 INFO  [main] UrlAccessCache: User Content: /403
+2019-02-28 23:14:47,125 INFO  [main] UrlAccessCache: User Content: /index
+2019-02-28 23:14:47,125 INFO  [main] UrlAccessCache: ========!! Init/Refresh Guest's AccessableUrl !!========
+2019-02-28 23:14:47,126 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:14:47,136 INFO  [main] UrlAccessCache: Guest Content: /403
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /addMock
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /addMocks
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /forgot
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /login
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /refresh
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: Guest Content: /signUp
+2019-02-28 23:14:47,137 INFO  [main] UrlAccessCache: ========!! Init/Refresh All Role's AccessableUrl are DONE!!========
+2019-02-28 23:14:47,960 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/403'], []
+2019-02-28 23:14:47,960 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/forgot'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/turnUp**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/video/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/favicon.ico'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/zkau/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/webjars/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/resources/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/static/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/css/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/js/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/images/**'], []
+2019-02-28 23:14:47,961 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-02-28 23:14:48,094 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@78545d40, org.springframework.security.web.context.SecurityContextPersistenceFilter@75ed7512, org.springframework.security.web.header.HeaderWriterFilter@7b451bf4, org.springframework.security.web.authentication.logout.LogoutFilter@67e6eb52, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@e881e46, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2bc16fe2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@33ebe4f0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@138a85d3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@34549979, org.springframework.security.web.session.SessionManagementFilter@5b665a30, org.springframework.security.web.access.ExceptionTranslationFilter@5b3518e1, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@300a38e7]
+2019-02-28 23:14:48,497 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-28 23:14:49,304 INFO  [main] AnnotationMBeanExporter: Registering beans for JMX exposure on startup
+2019-02-28 23:14:49,305 INFO  [main] AnnotationMBeanExporter: Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-02-28 23:14:49,312 INFO  [main] AnnotationMBeanExporter: Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-02-28 23:14:49,325 INFO  [main] Http11NioProtocol: Starting ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:14:49,336 INFO  [main] NioSelectorPool: Using a shared selector for servlet write/read
+2019-02-28 23:14:49,368 INFO  [main] TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-28 23:14:49,372 INFO  [main] Application: Started Application in 16.956 seconds (JVM running for 18.615)
+2019-02-28 23:18:13,270 INFO  [http-nio-8080-exec-1] [/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-28 23:18:13,357 INFO  [http-nio-8080-exec-1] RESTAuthenticationEntryPoint: ########## IN RESTAuthenticationEntryPoint.commence() ##########
+2019-02-28 23:18:13,357 INFO  [http-nio-8080-exec-1] RESTAuthenticationEntryPoint: :::::::::: NO AUTH, redirect to login ::::::::::
+2019-02-28 23:18:13,369 INFO  [http-nio-8080-exec-2] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:18:13,370 INFO  [http-nio-8080-exec-2] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /403
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /addMock
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /addMocks
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /forgot
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /login
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /refresh
+2019-02-28 23:18:13,376 INFO  [http-nio-8080-exec-2] UrlVoter: /signUp
+2019-02-28 23:18:13,377 INFO  [http-nio-8080-exec-2] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-02-28 23:18:35,362 INFO  [http-nio-8080-exec-5] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:18:35,362 INFO  [http-nio-8080-exec-5] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:18:35,368 INFO  [http-nio-8080-exec-5] UrlVoter: /403
+2019-02-28 23:18:35,368 INFO  [http-nio-8080-exec-5] UrlVoter: /addMock
+2019-02-28 23:18:35,368 INFO  [http-nio-8080-exec-5] UrlVoter: /addMocks
+2019-02-28 23:18:35,368 INFO  [http-nio-8080-exec-5] UrlVoter: /forgot
+2019-02-28 23:18:35,368 INFO  [http-nio-8080-exec-5] UrlVoter: /login
+2019-02-28 23:18:35,369 INFO  [http-nio-8080-exec-5] UrlVoter: /refresh
+2019-02-28 23:18:35,369 INFO  [http-nio-8080-exec-5] UrlVoter: /signUp
+2019-02-28 23:18:35,369 INFO  [http-nio-8080-exec-5] UrlVoter: ~~~~~~~ /signUp ~~~~~~~
+2019-02-28 23:18:37,713 ERROR [http-nio-8080-exec-5] [dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.mail.MailAuthenticationException: Authentication failed; nested exception is javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g69sm47898039pfd.168 - gsmtp
+] with root cause
+javax.mail.AuthenticationFailedException: 535-5.7.8 Username and Password not accepted. Learn more at
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials g69sm47898039pfd.168 - gsmtp
+
+	at com.sun.mail.smtp.SMTPTransport$Authenticator.authenticate(SMTPTransport.java:965)
+	at com.sun.mail.smtp.SMTPTransport.authenticate(SMTPTransport.java:876)
+	at com.sun.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:780)
+	at javax.mail.Service.connect(Service.java:366)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:515)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:435)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:321)
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:310)
+	at hello.service.impl.MailServiceImpl.sendSimpleMessage(MailServiceImpl.java:22)
+	at hello.service.impl.UserServiceImpl.add(UserServiceImpl.java:207)
+	at hello.service.impl.UserServiceImpl$$FastClassBySpringCGLIB$$4f26baf1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:746)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:185)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688)
+	at hello.service.impl.UserServiceImpl$$EnhancerBySpringCGLIB$$ab0b8c9c.add(<generated>)
+	at hello.controller.LoginController.register(LoginController.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:877)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:783)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:320)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:127)
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:91)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:119)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:137)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:111)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:170)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:158)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:200)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:66)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:105)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:334)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:215)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:178)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:357)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:270)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2019-02-28 23:20:41,870 INFO  [RMI TCP Connection(13)-127.0.0.1] SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin: Application shutdown requested.
+2019-02-28 23:20:41,871 INFO  [RMI TCP Connection(13)-127.0.0.1] AnnotationConfigServletWebServerApplicationContext: Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@37858383: startup date [Thu Feb 28 23:14:33 CST 2019]; root of context hierarchy
+2019-02-28 23:20:41,874 INFO  [RMI TCP Connection(13)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans on shutdown
+2019-02-28 23:20:41,876 INFO  [RMI TCP Connection(13)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans
+2019-02-28 23:20:41,879 INFO  [RMI TCP Connection(13)-127.0.0.1] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:20:41,882 INFO  [RMI TCP Connection(13)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2019-02-28 23:20:41,905 INFO  [RMI TCP Connection(13)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown completed.
+2019-02-28 23:20:54,700 INFO  [main] Application: Starting Application on LAPTOP-9H3472J4 with PID 14160 (C:\workspace\sideProj_workspace\bando\target\classes started by user in C:\workspace\sideProj_workspace\bando)
+2019-02-28 23:20:54,703 INFO  [main] Application: No active profile set, falling back to default profiles: default
+2019-02-28 23:20:55,034 INFO  [main] AnnotationConfigServletWebServerApplicationContext: Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@610f7aa: startup date [Thu Feb 28 23:20:55 CST 2019]; root of context hierarchy
+2019-02-28 23:20:56,454 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b4be6e75] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,506 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$4d6c36af] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,515 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,517 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@c6e0f32' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,524 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$7240d961] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,535 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:20:56,842 INFO  [main] TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+2019-02-28 23:20:56,856 INFO  [main] Http11NioProtocol: Initializing ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:20:56,866 INFO  [main] StandardService: Starting service [Tomcat]
+2019-02-28 23:20:56,867 INFO  [main] StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-28 23:20:56,874 INFO  [localhost-startStop-1] AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\jdk.1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/jdk.1.8.0_161/bin/../jre/bin/server;C:/jdk.1.8.0_161/bin/../jre/bin;C:/jdk.1.8.0_161/bin/../jre/lib/amd64;C:\00_tools\Xshell 6\;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\jdk.1.8.0_161\bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Apache\maven\bin;C:\Program Files\Apache\maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Python37-32\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\ProgramData\chocolatey\bin;C:\Python37-32\Scripts;C:\Ruby24-x64\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Roaming\npm;C:\Python27\;C:\Program Files\heroku\bin;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\IDE\sts-bundle\sts-4.0.1.RELEASE;;.]
+2019-02-28 23:20:57,237 INFO  [localhost-startStop-1] TldScanner: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-28 23:20:57,241 INFO  [localhost-startStop-1] [/]: Initializing Spring embedded WebApplicationContext
+2019-02-28 23:20:57,437 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-28 23:20:57,437 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-28 23:20:57,437 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-28 23:20:57,437 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-28 23:20:57,438 INFO  [localhost-startStop-1] DelegatingFilterProxyRegistrationBean: Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-28 23:20:57,438 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'webSocketFilter' to urls: [/zkwm/*]
+2019-02-28 23:20:57,438 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlLayoutServlet mapped to [*.zul]
+2019-02-28 23:20:57,440 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlUpdateServlet mapped to [/zkau/*]
+2019-02-28 23:20:57,440 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet cometAsyncServlet mapped to [/zkcomet/*]
+2019-02-28 23:20:57,441 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet dispatcherServlet mapped to [/]
+2019-02-28 23:20:57,463 INFO  [localhost-startStop-1] WebManager: Starting ZK 8.5.1.2 EE (build: 2018041015)
+2019-02-28 23:20:57,471 INFO  [localhost-startStop-1] ConfigParser: Loading system default
+2019-02-28 23:20:57,533 INFO  [localhost-startStop-1] ConfigParser: Parsing file:/C:/workspace/sideProj_workspace/bando/target/classes/metainfo/zk/zk.xml
+2019-02-28 23:20:57,536 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zul/8.5.1.2-Eval/zul-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:20:57,544 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkex/8.5.1.2-Eval/zkex-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:20:57,546 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkmax/8.5.1.2-Eval/zkmax-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:20:57,923 ERROR [localhost-startStop-1] global: This is an evaluation copy of ZK EE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK EE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+2019-02-28 23:20:58,339 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2019-02-28 23:20:58,861 INFO  [main] PoolBase: HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-02-28 23:20:58,866 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2019-02-28 23:20:58,921 INFO  [main] LocalContainerEntityManagerFactoryBean: Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:20:58,936 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-28 23:20:59,061 INFO  [main] Version: HHH000412: Hibernate Core {5.2.17.Final}
+2019-02-28 23:20:59,063 INFO  [main] Environment: HHH000206: hibernate.properties not found
+2019-02-28 23:20:59,154 INFO  [main] Version: HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-02-28 23:20:59,357 INFO  [main] Dialect: HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2019-02-28 23:20:59,486 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@3811510
+2019-02-28 23:20:59,486 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@3811510
+2019-02-28 23:20:59,487 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@748f93bb
+2019-02-28 23:20:59,487 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@748f93bb
+2019-02-28 23:20:59,673 WARN  [main] UUIDHexGenerator: HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-02-28 23:20:59,714 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:20:59,714 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:20:59,716 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:20:59,716 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:21:00,246 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:21:00,573 INFO  [main] RoleCache: ========!! Fetch All Role Object to Cache !!========
+2019-02-28 23:21:00,953 INFO  [main] UrlAccessCache: ========!! Init/Refresh Admin's AccessableUrl !!========
+2019-02-28 23:21:00,954 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:21:00,969 INFO  [main] QueryTranslatorFactoryInitiator: HHH000397: Using ASTQueryTranslatorFactory
+2019-02-28 23:21:01,079 INFO  [main] UrlAccessCache: Admin Content: /403
+2019-02-28 23:21:01,080 INFO  [main] UrlAccessCache: Admin Content: /admin
+2019-02-28 23:21:01,080 INFO  [main] UrlAccessCache: Admin Content: /index
+2019-02-28 23:21:01,080 INFO  [main] UrlAccessCache: ========!! Init/Refresh User's AccessableUrl !!========
+2019-02-28 23:21:01,080 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:21:01,083 INFO  [main] UrlAccessCache: User Content: /403
+2019-02-28 23:21:01,084 INFO  [main] UrlAccessCache: User Content: /index
+2019-02-28 23:21:01,084 INFO  [main] UrlAccessCache: ========!! Init/Refresh Guest's AccessableUrl !!========
+2019-02-28 23:21:01,084 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /403
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /addMock
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /addMocks
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /forgot
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /login
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /refresh
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: Guest Content: /signUp
+2019-02-28 23:21:01,091 INFO  [main] UrlAccessCache: ========!! Init/Refresh All Role's AccessableUrl are DONE!!========
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/403'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/forgot'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/turnUp**'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/video/**'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/favicon.ico'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/zkau/**'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/webjars/**'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/resources/**'], []
+2019-02-28 23:21:01,531 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/static/**'], []
+2019-02-28 23:21:01,532 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/css/**'], []
+2019-02-28 23:21:01,532 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/js/**'], []
+2019-02-28 23:21:01,532 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/images/**'], []
+2019-02-28 23:21:01,532 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-02-28 23:21:01,613 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f1f9515, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ad2b274, org.springframework.security.web.header.HeaderWriterFilter@205159dc, org.springframework.security.web.authentication.logout.LogoutFilter@84f51d9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5b4954b2, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@9205c0a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7114e780, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22686ddb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c8ab9de, org.springframework.security.web.session.SessionManagementFilter@731db93f, org.springframework.security.web.access.ExceptionTranslationFilter@5486ee92, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@68b7bdcb]
+2019-02-28 23:21:01,951 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-28 23:21:02,621 INFO  [main] AnnotationMBeanExporter: Registering beans for JMX exposure on startup
+2019-02-28 23:21:02,623 INFO  [main] AnnotationMBeanExporter: Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-02-28 23:21:02,630 INFO  [main] AnnotationMBeanExporter: Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-02-28 23:21:02,642 INFO  [main] Http11NioProtocol: Starting ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:21:02,656 INFO  [main] NioSelectorPool: Using a shared selector for servlet write/read
+2019-02-28 23:21:02,680 INFO  [main] TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-28 23:21:02,683 INFO  [main] Application: Started Application in 8.401 seconds (JVM running for 9.797)
+2019-02-28 23:21:15,873 INFO  [http-nio-8080-exec-1] [/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-28 23:21:15,915 INFO  [http-nio-8080-exec-1] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:21:15,915 INFO  [http-nio-8080-exec-1] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:21:15,925 INFO  [http-nio-8080-exec-1] UrlVoter: /403
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /addMock
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /addMocks
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /forgot
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /login
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /refresh
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: /signUp
+2019-02-28 23:21:15,926 INFO  [http-nio-8080-exec-1] UrlVoter: ~~~~~~~ /signUp ~~~~~~~
+2019-02-28 23:23:48,686 INFO  [RMI TCP Connection(14)-127.0.0.1] SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin: Application shutdown requested.
+2019-02-28 23:23:48,687 INFO  [RMI TCP Connection(14)-127.0.0.1] AnnotationConfigServletWebServerApplicationContext: Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@610f7aa: startup date [Thu Feb 28 23:20:55 CST 2019]; root of context hierarchy
+2019-02-28 23:23:48,691 INFO  [RMI TCP Connection(14)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans on shutdown
+2019-02-28 23:23:48,692 INFO  [RMI TCP Connection(14)-127.0.0.1] AnnotationMBeanExporter: Unregistering JMX-exposed beans
+2019-02-28 23:23:48,695 INFO  [RMI TCP Connection(14)-127.0.0.1] LocalContainerEntityManagerFactoryBean: Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:23:48,696 INFO  [RMI TCP Connection(14)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown initiated...
+2019-02-28 23:23:48,715 INFO  [RMI TCP Connection(14)-127.0.0.1] HikariDataSource: HikariPool-1 - Shutdown completed.
+2019-02-28 23:24:09,276 INFO  [main] Application: Starting Application on LAPTOP-9H3472J4 with PID 6244 (C:\workspace\sideProj_workspace\bando\target\classes started by user in C:\workspace\sideProj_workspace\bando)
+2019-02-28 23:24:09,280 INFO  [main] Application: No active profile set, falling back to default profiles: default
+2019-02-28 23:24:09,542 INFO  [main] AnnotationConfigServletWebServerApplicationContext: Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@21b2e768: startup date [Thu Feb 28 23:24:09 CST 2019]; root of context hierarchy
+2019-02-28 23:24:10,803 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d32d2f97] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:10,859 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration' of type [org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration$$EnhancerBySpringCGLIB$$6bdaf7d1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:10,871 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'objectPostProcessor' of type [org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:10,874 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@21a66d45' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:10,880 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration' of type [org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration$$EnhancerBySpringCGLIB$$90af9a83] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:10,890 INFO  [main] PostProcessorRegistrationDelegate$BeanPostProcessorChecker: Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-28 23:24:11,208 INFO  [main] TomcatWebServer: Tomcat initialized with port(s): 8080 (http)
+2019-02-28 23:24:11,220 INFO  [main] Http11NioProtocol: Initializing ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:24:11,231 INFO  [main] StandardService: Starting service [Tomcat]
+2019-02-28 23:24:11,231 INFO  [main] StandardEngine: Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-28 23:24:11,236 INFO  [localhost-startStop-1] AprLifecycleListener: The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\jdk.1.8.0_161\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/jdk.1.8.0_161/bin/../jre/bin/server;C:/jdk.1.8.0_161/bin/../jre/bin;C:/jdk.1.8.0_161/bin/../jre/lib/amd64;C:\00_tools\Xshell 6\;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\jdk.1.8.0_161\bin;C:\oraclexe\app\oracle\product\11.2.0\server\bin;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Apache\maven\bin;C:\Program Files\Apache\maven\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Python37-32\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\TortoiseGit\bin;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\ProgramData\chocolatey\bin;C:\Python37-32\Scripts;C:\Ruby24-x64\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Local\GitHubDesktop\bin;C:\Users\user\AppData\Local\Microsoft\WindowsApps;C:\Users\user\AppData\Roaming\npm;C:\Python27\;C:\Program Files\heroku\bin;C:\Users\user\AppData\Local\Programs\Microsoft VS Code\bin;C:\IDE\sts-bundle\sts-4.0.1.RELEASE;;.]
+2019-02-28 23:24:11,582 INFO  [localhost-startStop-1] TldScanner: At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2019-02-28 23:24:11,586 INFO  [localhost-startStop-1] [/]: Initializing Spring embedded WebApplicationContext
+2019-02-28 23:24:11,760 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-28 23:24:11,760 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-28 23:24:11,761 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-28 23:24:11,761 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-28 23:24:11,762 INFO  [localhost-startStop-1] DelegatingFilterProxyRegistrationBean: Mapping filter: 'springSecurityFilterChain' to: [/*]
+2019-02-28 23:24:11,762 INFO  [localhost-startStop-1] FilterRegistrationBean: Mapping filter: 'webSocketFilter' to urls: [/zkwm/*]
+2019-02-28 23:24:11,763 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlLayoutServlet mapped to [*.zul]
+2019-02-28 23:24:11,765 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet DHtmlUpdateServlet mapped to [/zkau/*]
+2019-02-28 23:24:11,765 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet cometAsyncServlet mapped to [/zkcomet/*]
+2019-02-28 23:24:11,766 INFO  [localhost-startStop-1] ServletRegistrationBean: Servlet dispatcherServlet mapped to [/]
+2019-02-28 23:24:11,786 INFO  [localhost-startStop-1] WebManager: Starting ZK 8.5.1.2 EE (build: 2018041015)
+2019-02-28 23:24:11,794 INFO  [localhost-startStop-1] ConfigParser: Loading system default
+2019-02-28 23:24:11,853 INFO  [localhost-startStop-1] ConfigParser: Parsing file:/C:/workspace/sideProj_workspace/bando/target/classes/metainfo/zk/zk.xml
+2019-02-28 23:24:11,857 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zul/8.5.1.2-Eval/zul-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:24:11,870 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkex/8.5.1.2-Eval/zkex-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:24:11,873 INFO  [localhost-startStop-1] ConfigParser: Parsing jar:file:/C:/Users/user/.m2/repository/org/zkoss/zk/zkmax/8.5.1.2-Eval/zkmax-8.5.1.2-Eval.jar!/metainfo/zk/zk.xml
+2019-02-28 23:24:12,240 ERROR [localhost-startStop-1] global: This is an evaluation copy of ZK EE and will terminate after sixty days from the first date of installation. Should you require an open source license or commercial license for ZK EE please contact us at info@zkoss.org for more information. Alternatively you can download ZK CE which is licensed under the LGPL.
+2019-02-28 23:24:12,632 INFO  [main] HikariDataSource: HikariPool-1 - Starting...
+2019-02-28 23:24:13,110 INFO  [main] PoolBase: HikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+2019-02-28 23:24:13,115 INFO  [main] HikariDataSource: HikariPool-1 - Start completed.
+2019-02-28 23:24:13,170 INFO  [main] LocalContainerEntityManagerFactoryBean: Building JPA container EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:24:13,183 INFO  [main] LogHelper: HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-02-28 23:24:13,302 INFO  [main] Version: HHH000412: Hibernate Core {5.2.17.Final}
+2019-02-28 23:24:13,305 INFO  [main] Environment: HHH000206: hibernate.properties not found
+2019-02-28 23:24:13,383 INFO  [main] Version: HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2019-02-28 23:24:13,577 INFO  [main] Dialect: HHH000400: Using dialect: org.hibernate.dialect.Oracle12cDialect
+2019-02-28 23:24:13,675 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [byte[]] overrides previous : org.hibernate.type.BinaryType@6d2a2560
+2019-02-28 23:24:13,675 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[B] overrides previous : org.hibernate.type.BinaryType@6d2a2560
+2019-02-28 23:24:13,676 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [Byte[]] overrides previous : org.hibernate.type.WrapperBinaryType@24eeac69
+2019-02-28 23:24:13,677 INFO  [main] BasicTypeRegistry: HHH000270: Type registration [[Ljava.lang.Byte;] overrides previous : org.hibernate.type.WrapperBinaryType@24eeac69
+2019-02-28 23:24:13,892 WARN  [main] UUIDHexGenerator: HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-02-28 23:24:13,930 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:24:13,931 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.RoleOfMemberPK
+2019-02-28 23:24:13,932 WARN  [main] RootClass: HHH000038: Composite-id class does not override equals(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:24:13,932 WARN  [main] RootClass: HHH000039: Composite-id class does not override hashCode(): hello.domain.compositePK.UrlAuthPK
+2019-02-28 23:24:14,318 INFO  [main] LocalContainerEntityManagerFactoryBean: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-02-28 23:24:14,595 INFO  [main] RoleCache: ========!! Fetch All Role Object to Cache !!========
+2019-02-28 23:24:15,035 INFO  [main] UrlAccessCache: ========!! Init/Refresh Admin's AccessableUrl !!========
+2019-02-28 23:24:15,035 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:24:15,051 INFO  [main] QueryTranslatorFactoryInitiator: HHH000397: Using ASTQueryTranslatorFactory
+2019-02-28 23:24:15,164 INFO  [main] UrlAccessCache: Admin Content: /403
+2019-02-28 23:24:15,164 INFO  [main] UrlAccessCache: Admin Content: /admin
+2019-02-28 23:24:15,164 INFO  [main] UrlAccessCache: Admin Content: /index
+2019-02-28 23:24:15,164 INFO  [main] UrlAccessCache: ========!! Init/Refresh User's AccessableUrl !!========
+2019-02-28 23:24:15,165 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:24:15,168 INFO  [main] UrlAccessCache: User Content: /403
+2019-02-28 23:24:15,168 INFO  [main] UrlAccessCache: User Content: /index
+2019-02-28 23:24:15,168 INFO  [main] UrlAccessCache: ========!! Init/Refresh Guest's AccessableUrl !!========
+2019-02-28 23:24:15,169 INFO  [main] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /403
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /addMock
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /addMocks
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /forgot
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /login
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /refresh
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: Guest Content: /signUp
+2019-02-28 23:24:15,173 INFO  [main] UrlAccessCache: ========!! Init/Refresh All Role's AccessableUrl are DONE!!========
+2019-02-28 23:24:15,591 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/403'], []
+2019-02-28 23:24:15,591 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/forgot'], []
+2019-02-28 23:24:15,591 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/turnUp**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/video/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/favicon.ico'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/zkau/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/webjars/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/resources/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/static/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/css/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/js/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/images/**'], []
+2019-02-28 23:24:15,592 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: Ant [pattern='/fonts/**'], []
+2019-02-28 23:24:15,675 INFO  [main] DefaultSecurityFilterChain: Creating filter chain: org.springframework.security.web.util.matcher.AnyRequestMatcher@1, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@16b64a03, org.springframework.security.web.context.SecurityContextPersistenceFilter@4c5f7b4f, org.springframework.security.web.header.HeaderWriterFilter@2d6a0766, org.springframework.security.web.authentication.logout.LogoutFilter@20820df0, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7dd45c93, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@cd5ff55, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44084713, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d28cdcd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1584c019, org.springframework.security.web.session.SessionManagementFilter@31c7c281, org.springframework.security.web.access.ExceptionTranslationFilter@78288f83, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@166ce247]
+2019-02-28 23:24:15,998 WARN  [main] JpaBaseConfiguration$JpaWebConfiguration$JpaWebMvcConfiguration: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-02-28 23:24:16,672 INFO  [main] AnnotationMBeanExporter: Registering beans for JMX exposure on startup
+2019-02-28 23:24:16,674 INFO  [main] AnnotationMBeanExporter: Bean with name 'dataSource' has been autodetected for JMX exposure
+2019-02-28 23:24:16,681 INFO  [main] AnnotationMBeanExporter: Located MBean 'dataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=dataSource,type=HikariDataSource]
+2019-02-28 23:24:16,693 INFO  [main] Http11NioProtocol: Starting ProtocolHandler ["http-nio-8080"]
+2019-02-28 23:24:16,703 INFO  [main] NioSelectorPool: Using a shared selector for servlet write/read
+2019-02-28 23:24:16,726 INFO  [main] TomcatWebServer: Tomcat started on port(s): 8080 (http) with context path ''
+2019-02-28 23:24:16,730 INFO  [main] Application: Started Application in 7.825 seconds (JVM running for 9.511)
+2019-02-28 23:26:47,680 INFO  [http-nio-8080-exec-1] [/]: Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-28 23:26:47,723 INFO  [http-nio-8080-exec-1] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:26:47,723 INFO  [http-nio-8080-exec-1] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /403
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /addMock
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /addMocks
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /forgot
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /login
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /refresh
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: /signUp
+2019-02-28 23:26:47,735 INFO  [http-nio-8080-exec-1] UrlVoter: ~~~~~~~ /signUp ~~~~~~~
+2019-02-28 23:27:11,603 INFO  [http-nio-8080-exec-4] RESTAuthenticationEntryPoint: ########## IN RESTAuthenticationEntryPoint.commence() ##########
+2019-02-28 23:27:11,603 INFO  [http-nio-8080-exec-4] RESTAuthenticationEntryPoint: :::::::::: NO AUTH, redirect to login ::::::::::
+2019-02-28 23:27:11,623 INFO  [http-nio-8080-exec-5] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:27:11,623 INFO  [http-nio-8080-exec-5] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /403
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /addMock
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /addMocks
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /forgot
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /login
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /refresh
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: /signUp
+2019-02-28 23:27:11,635 INFO  [http-nio-8080-exec-5] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-02-28 23:32:20,259 INFO  [http-nio-8080-exec-10] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:32:20,259 INFO  [http-nio-8080-exec-10] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /403
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /addMock
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /addMocks
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /forgot
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /login
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /refresh
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: /signUp
+2019-02-28 23:32:20,274 INFO  [http-nio-8080-exec-10] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-02-28 23:32:59,522 INFO  [http-nio-8080-exec-2] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:32:59,522 INFO  [http-nio-8080-exec-2] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:32:59,526 INFO  [http-nio-8080-exec-2] UrlVoter: /403
+2019-02-28 23:32:59,526 INFO  [http-nio-8080-exec-2] UrlVoter: /index
+2019-02-28 23:32:59,526 INFO  [http-nio-8080-exec-2] UrlVoter: ~~~~~~~ /index ~~~~~~~
+2019-02-28 23:32:59,910 WARN  [http-nio-8080-exec-2] DecoratorProcessor: The layout:decorator/data-layout-decorator processor has been deprecated and will be removed in the next major version of the layout dialect.  Please use layout:decorate/data-layout-decorate instead to future-proof your code.  See https://github.com/ultraq/thymeleaf-layout-dialect/issues/95 for more information.
+2019-02-28 23:33:00,062 WARN  [http-nio-8080-exec-2] ExpressionProcessor: Fragment expression "layout/layout" is being wrapped as a Thymeleaf 3 fragment expression (~{...}) for backwards compatibility purposes.  This wrapping will be dropped in the next major version of the expression processor, so please rewrite as a Thymeleaf 3 fragment expression to future-proof your code.  See https://github.com/thymeleaf/thymeleaf/issues/451 for more information.
+2019-02-28 23:34:25,664 INFO  [http-nio-8080-exec-7] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:34:25,664 INFO  [http-nio-8080-exec-7] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:34:25,668 INFO  [http-nio-8080-exec-7] UrlVoter: /403
+2019-02-28 23:34:25,668 INFO  [http-nio-8080-exec-7] UrlVoter: /addMock
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: /addMocks
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: /forgot
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: /login
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: /refresh
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: /signUp
+2019-02-28 23:34:25,672 INFO  [http-nio-8080-exec-7] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-02-28 23:44:37,818 INFO  [http-nio-8080-exec-9] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-02-28 23:44:37,818 INFO  [http-nio-8080-exec-9] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: /403
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: /admin
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: /index
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: /403
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: /index
+2019-02-28 23:44:37,830 INFO  [http-nio-8080-exec-9] UrlVoter: ~~~~~~~ /admin ~~~~~~~
+2019-02-28 23:44:38,202 INFO  [http-nio-8080-exec-9] ShopServiceImpl: ##### List size: 28 #####
+2019-02-28 23:44:38,370 INFO  [http-nio-8080-exec-9] LabelLoaderImpl: Loading labels for zh_TW
+2019-02-28 23:44:38,370 INFO  [http-nio-8080-exec-9] LabelLoaderImpl: Loading labels for zh
+2019-02-28 23:44:39,378 INFO  [http-nio-8080-exec-9] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-02-28 23:44:39,381 INFO  [http-nio-8080-exec-9] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:44:39,387 INFO  [http-nio-8080-exec-9] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:44:39,387 INFO  [http-nio-8080-exec-9] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: /403
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: /admin
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: /index
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: /403
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: /index
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] UrlVoter: ~~~~~~~ /zkwm ~~~~~~~
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] DenyAccessHandler: ### In DenyAccessHandler.handle() ###
+2019-02-28 23:44:39,391 INFO  [http-nio-8080-exec-9] DenyAccessHandler: ### User 'peter' attempted to access the protected URL: /zkwm ###
+2019-02-28 23:44:43,451 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:44:43,457 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 4
+2019-02-28 23:44:43,457 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:44:44,769 INFO  [http-nio-8080-exec-7] ShopServiceImpl: ##### List size: 28 #####
+2019-02-28 23:44:45,787 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:44:45,791 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 4
+2019-02-28 23:44:45,791 INFO  [http-nio-8080-exec-3] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:48:13,335 INFO  [http-nio-8080-exec-3] ShopServiceImpl: ##### List size: 28 #####
+2019-02-28 23:48:15,455 INFO  [http-nio-8080-exec-5] Q002: ######## OrderMaster Size: 10
+2019-02-28 23:48:18,995 INFO  [http-nio-8080-exec-1] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:48:18,998 INFO  [http-nio-8080-exec-1] ScheduleServiceImpl: The num of list : 4
+2019-02-28 23:48:18,998 INFO  [http-nio-8080-exec-1] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:48:22,178 INFO  [http-nio-8080-exec-9] Q002: ######## OrderMaster Size: 10
+2019-02-28 23:48:23,260 INFO  [http-nio-8080-exec-10] ShopServiceImpl: ##### List size: 28 #####
+2019-02-28 23:52:30,578 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:52:30,584 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 4
+2019-02-28 23:52:30,584 INFO  [http-nio-8080-exec-8] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:52:31,745 INFO  [http-nio-8080-exec-7] Q002: ######## OrderMaster Size: 10
+2019-02-28 23:52:36,980 INFO  [http-nio-8080-exec-6] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-02-28 23:52:36,980 INFO  [http-nio-8080-exec-6] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:52:36,983 INFO  [http-nio-8080-exec-6] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:52:36,987 INFO  [http-nio-8080-exec-6] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: /403
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: /admin
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: /index
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: /403
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: /index
+2019-02-28 23:52:36,991 INFO  [http-nio-8080-exec-6] UrlVoter: ~~~~~~~ /index ~~~~~~~
+2019-02-28 23:52:42,963 INFO  [http-nio-8080-exec-9] UrlVoter: ADD ROLE_ANONYMOUS Accessable Url
+2019-02-28 23:52:42,967 INFO  [http-nio-8080-exec-9] UrlAuthServiceImpl: ##### Get ROLE_ANONYMOUS's Accessable Url List from DB #####
+2019-02-28 23:52:42,970 INFO  [http-nio-8080-exec-9] UrlVoter: /403
+2019-02-28 23:52:42,970 INFO  [http-nio-8080-exec-9] UrlVoter: /addMock
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: /addMocks
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: /forgot
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: /login
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: /refresh
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: /signUp
+2019-02-28 23:52:42,974 INFO  [http-nio-8080-exec-9] UrlVoter: ~~~~~~~ /login ~~~~~~~
+2019-02-28 23:56:24,410 INFO  [http-nio-8080-exec-8] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-02-28 23:56:24,410 INFO  [http-nio-8080-exec-8] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:56:24,414 INFO  [http-nio-8080-exec-8] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:56:24,414 INFO  [http-nio-8080-exec-8] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: /403
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: /admin
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: /index
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: /403
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: /index
+2019-02-28 23:56:24,418 INFO  [http-nio-8080-exec-8] UrlVoter: ~~~~~~~ /admin ~~~~~~~
+2019-02-28 23:56:24,426 INFO  [http-nio-8080-exec-8] ShopServiceImpl: ##### List size: 28 #####
+2019-02-28 23:56:24,922 INFO  [http-nio-8080-exec-3] UrlVoter: ADD ROLE_ADMIN Accessable Url
+2019-02-28 23:56:24,922 INFO  [http-nio-8080-exec-3] UrlAuthServiceImpl: ##### Get ROLE_ADMIN's Accessable Url List from DB #####
+2019-02-28 23:56:24,926 INFO  [http-nio-8080-exec-3] UrlVoter: ADD ROLE_USER Accessable Url
+2019-02-28 23:56:24,926 INFO  [http-nio-8080-exec-3] UrlAuthServiceImpl: ##### Get ROLE_USER's Accessable Url List from DB #####
+2019-02-28 23:56:24,926 INFO  [http-nio-8080-exec-3] UrlVoter: /403
+2019-02-28 23:56:24,926 INFO  [http-nio-8080-exec-3] UrlVoter: /admin
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] UrlVoter: /index
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] UrlVoter: /403
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] UrlVoter: /index
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] UrlVoter: ~~~~~~~ /zkwm ~~~~~~~
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] DenyAccessHandler: ### In DenyAccessHandler.handle() ###
+2019-02-28 23:56:24,930 INFO  [http-nio-8080-exec-3] DenyAccessHandler: ### User 'peter' attempted to access the protected URL: /zkwm ###
+2019-02-28 23:56:28,947 INFO  [http-nio-8080-exec-6] ScheduleServiceImpl: The num of list : 3
+2019-02-28 23:56:28,957 INFO  [http-nio-8080-exec-6] ScheduleServiceImpl: The num of list : 4
+2019-02-28 23:56:28,957 INFO  [http-nio-8080-exec-6] ScheduleServiceImpl: The num of list : 3

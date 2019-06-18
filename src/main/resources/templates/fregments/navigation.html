@@ -1,19 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
-	<title>Header</title>
+		<title>Header</title>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="navigation">
-		    <div class="container">
+		<nav class="navbar navbar-inverse navbar-fixed-top navbar-custom" th:fragment="navigation">
+		    <div class="container-fluid">
         		<div class="navbar-header">
-            		<a class="navbar-brand">ThymePrac</a>
+            		<a class="navbar-brand">BANDON</a>
         		</div>
         		<ul class="nav navbar-nav">
-      				<li><a th:href="@{/member/signUp}">Sign Up</a></li>
-      				<li><a th:href="@{/member/showAll}">Edit</a></li>
+      				<li><a th:href="@{/index}">訂便當</a></li>
+      				<li><a th:href="@{/member/showAll}">訂購紀錄</a></li>
      			</ul>
+     			<ul class="nav navbar-nav navbar-nav-custom navbar-right">
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello User</a>
+						<ul class="dropdown-menu">
+							<li><a href="#">修改會員資料</a></li>
+							<li class="divider"></li>
+							<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
+						</ul>
+					</li>
+  				</ul>
     		</div>
 		</nav>
 	</body>
