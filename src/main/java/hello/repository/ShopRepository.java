@@ -10,6 +10,6 @@ import hello.domain.Shop;
 @Transactional
 public interface ShopRepository extends JpaRepository<Shop, String> {
 
-	List<Shop> findAll();
+	public List<Shop> findAll();
 	
 }

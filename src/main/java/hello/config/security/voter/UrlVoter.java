@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,7 @@ public class UrlVoter implements AccessDecisionVoter {
 	private static final String ADMIN = "ROLE_ADMIN";
 	private static final String USER = "ROLE_USER";
 	private static final String GUEST = "ROLE_ANONYMOUS";
+	private static final String STAR = "*";
 	
 	@Autowired
 	private UrlAuthService urlAuthSrvc;
@@ -94,12 +96,19 @@ public class UrlVoter implements AccessDecisionVoter {
 	
 	private int accessJudge(List<String> urlList, String reqUrl){
 		LOG.info("~~~~~~~ {} ~~~~~~~", reqUrl);
-		if (urlList.contains(reqUrl)) {
-			return ACCESS_GRANTED;
-		} else {
-			return ACCESS_DENIED;
+		int result = ACCESS_DENIED;
+		for (String url : urlList) {
+			if (StringUtils.endsWith(url, STAR)) {
+				String baseUrl = StringUtils.remove(url, STAR);
+				if (StringUtils.contains(reqUrl, baseUrl)) {
+					result = ACCESS_GRANTED;
+					break;
+				}
+			} else if(urlList.contains(reqUrl)) {
+				result = ACCESS_GRANTED;
+			}
 		}
-
+		return result;
 	}
 	
 	private String getReqURI() {

@@ -14,7 +14,6 @@ public class MailServiceImpl implements MailService {
 	private JavaMailSender emailSender;
 	
 	public void sendSimpleMessage(String to, String subject, String text) {
-		
 		SimpleMailMessage message = new SimpleMailMessage();
 		message.setTo(to);
 		message.setSubject(subject);

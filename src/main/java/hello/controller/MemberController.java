@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import hello.domain.Member;
+import hello.exception.BandoException;
 import hello.service.UserService;
 import hello.service.impl.UserServiceImpl;
 
@@ -35,13 +37,14 @@ public class MemberController {
 	@RequestMapping(value="/turnUp")
 	public String enableAndLogin(@RequestParam("pid") String user) {
 		String page;
-		System.out.println(user);
-		
-		if (userSvc.changeMemberStatus(user)) {
+		try {
+			LOG.info("GET IN TURN UP");
+			userSvc.changeMemberStatus(user);
 			page = "redirect:member/index";
-		} else {
+		} catch(BandoException be) {
 			page = "jsp/login";
 		}
+		
 		return page;
 	}
 	

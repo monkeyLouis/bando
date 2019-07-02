@@ -10,6 +10,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import hello.util.DateUtil;
 @Service("scheduleSrvc")
 public class ScheduleServiceImpl implements ScheduleService {
 	
+	private static final String STARTDATE = "startDate";
 	private static final String ENDDATE = "endDate";
 	private static Logger LOG = LoggerFactory.getLogger(ScheduleServiceImpl.class);
 	
@@ -37,17 +39,24 @@ public class ScheduleServiceImpl implements ScheduleService {
 		result.forEach(r -> LOG.info("The num of list : {}", r.getOrderMasterListOfDay().size()));
 		return this.calculateTotalPriceAndTotalQuantity(result);
 	}
-
+	
 	@Override
 	public List<Schedule> findByDate(Date date) {
-		List<Schedule> result = scheduleRepository.findAll((Root<Schedule> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+		Date dateStart = DateUtil.getDayStart(date);
+		Date dateEnd = DateUtil.getNextDayStart(date);
+		return findByDate(dateStart, dateEnd);
+	}
+	
+	@Override
+	public List<Schedule> findByDate(Date dateStart, Date dateEnd) {
+		return scheduleRepository.findAll((Root<Schedule> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
 			List<Predicate> predicates = new ArrayList<>();
 			
 			// 加入複合條件
 			Path<Date> scheduleDate = root.get(ENDDATE);
-			if(date != null) {
-				predicates.add(cb.lessThan(scheduleDate, DateUtil.getNextDayStart(date)));
-				predicates.add(cb.greaterThanOrEqualTo(scheduleDate, DateUtil.getDayStart(date)));
+			if(dateStart != null && dateEnd != null) {
+				predicates.add(cb.lessThan(scheduleDate, dateEnd));
+				predicates.add(cb.greaterThanOrEqualTo(scheduleDate, dateStart));
 			}
 			
 			query.orderBy(cb.desc(root.get(ENDDATE)));
@@ -57,11 +66,38 @@ public class ScheduleServiceImpl implements ScheduleService {
 			}
 			return cb.conjunction();
 		});
-		
-		return calculateTotalPriceAndTotalQuantity(result);
 	}
 	
-	public List<Schedule> calculateTotalPriceAndTotalQuantity(List<Schedule> list){
+	@Override
+	public List<Schedule> findByTime(Date date, int min) {
+		Date dateAfterMins = DateUtils.addMinutes(date, min);
+		Date dateBeforeMins = DateUtils.addMinutes(date, -10);
+		
+		return findByTimeBetween(dateAfterMins, dateBeforeMins);
+	}
+	
+	@Override
+	public List<Schedule> findByTimeBetween(Date dateStart, Date dateEnd) {
+		return scheduleRepository.findAll((Root<Schedule> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+			List<Predicate> predicates = new ArrayList<>();
+			
+			// 加入複合條件
+			Path<Date> scheduleStartDate = root.get(STARTDATE);
+			Path<Date> scheduleEndDate = root.get(ENDDATE);
+			
+			predicates.add(cb.lessThan(scheduleStartDate, dateStart));
+			predicates.add(cb.greaterThanOrEqualTo(scheduleEndDate, dateEnd));
+			
+			query.orderBy(cb.desc(root.get(ENDDATE)));
+			
+			if(!predicates.isEmpty()){
+				return cb.and(predicates.toArray(new Predicate[predicates.size()]));
+			}
+			return cb.conjunction();
+		});
+	}
+	
+	private List<Schedule> calculateTotalPriceAndTotalQuantity(List<Schedule> list){
 		
 		list.stream().forEach(schedule -> {
 			schedule.getOrderMasterListOfDay().stream()

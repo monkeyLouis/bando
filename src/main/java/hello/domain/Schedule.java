@@ -1,7 +1,9 @@
 package hello.domain;
 
+import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +17,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISOPeriodFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="SCHEDULE")
@@ -26,9 +34,11 @@ public class Schedule {
 	@Column(name="UUID")
 	private String scheduleId;
 	
+	@JsonIgnore
 	@Column(name="SCHE_START_DATE")
 	private Date startDate;
 	
+	@JsonIgnore
 	@Column(name="SCHE_END_DATE")
 	private Date endDate;
 	
@@ -36,6 +46,7 @@ public class Schedule {
 	@JoinColumn(name="SHOPID", nullable=false)
 	private Shop theShopOfDay;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="scheduleId", fetch=FetchType.LAZY, targetEntity=OrderMaster.class)
 	private List<OrderMaster> orderMasterListOfDay;
 	
@@ -86,6 +97,40 @@ public class Schedule {
 	}
 	public void setTotalPrice(Integer totalPrice) {
 		this.totalPrice = totalPrice;
+	}
+	public String getTWStartTime() {
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.TAIWAN);
+		return df.format(startDate);
+	}
+	public String getTWEndTime() {
+		DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, Locale.TAIWAN);
+		return df.format(endDate);
+	}
+	public boolean isOpenOrder() {
+		return new Date().after(this.startDate) && new Date().before(this.endDate);
+	}
+	public boolean isCloseOrder() {
+		return new Date().after(this.endDate);
+	}
+	public long getOpenOrderTime() {
+		return getSecBetweenAandB(this.startDate, new Date());
+	}
+	public long getCloseOrderTime() {
+		return getSecBetweenAandB(this.endDate, new Date() );
+	}
+	private long getSecBetweenAandB(Date dateA, Date dateB) {
+		long milSec = dateA.getTime() - dateB.getTime();
+		return milSec/1000;
+	}
+	public String getOrderStatus() {
+		if (!isOpenOrder() && !isCloseOrder()) {
+			return "1";
+		} else if (isOpenOrder() && !isCloseOrder()) {
+			return "2";
+		} else if (!isOpenOrder() && isCloseOrder()) {
+			return "3";
+		}
+		return "";
 	}
 	
 	@Override

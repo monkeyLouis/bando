@@ -1,11 +1,23 @@
 package hello.domain.rest;
 
+import hello.enums.BandoStatus;
+
 public class RestResponse<T> {
 	private Integer status;
 	private String message;
 	private T data;
 	
 	public RestResponse(){ }
+	
+	public RestResponse(BandoStatus statusEnum) {
+		this.status = statusEnum.getCode();
+		this.message = statusEnum.getMessage();
+	}
+	
+	public RestResponse(BandoStatus statusEnum, T data) {
+		this(statusEnum);
+		this.data = data;
+	}
 	
 	public RestResponse(Integer status, String message, T data){
 		this.status = status;

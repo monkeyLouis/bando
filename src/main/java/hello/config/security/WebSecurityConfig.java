@@ -2,19 +2,16 @@ package hello.config.security;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.vote.AuthenticatedVoter;
 import org.springframework.security.access.vote.RoleVoter;
 import org.springframework.security.access.vote.UnanimousBased;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -49,6 +46,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Bean
 	public static PasswordEncoder passwordEncoder() {
 	  return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 	
 	@Bean
@@ -120,8 +122,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         	.ignoring()
         	.antMatchers("/403")
         	.antMatchers("/forgot")
-        	.antMatchers("/turnUp**")
             .antMatchers("/video/**")
+            .antMatchers("/turnUp**")
             .antMatchers("/favicon.ico")
             .antMatchers("/zkau/**")
             .antMatchers("/webjars/**", "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/fonts/**");

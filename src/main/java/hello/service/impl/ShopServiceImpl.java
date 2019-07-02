@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hello.domain.Shop;
+import hello.enums.BandoStatus;
+import hello.exception.BandoException;
 import hello.repository.ShopRepository;
 import hello.service.ShopService;
+import hello.util.BeanCopierUtil;
 
 @Service("shopSrvc")
 public class ShopServiceImpl implements ShopService{
@@ -30,14 +33,17 @@ public class ShopServiceImpl implements ShopService{
 	@Override
 	@Transactional(readOnly=true)
 	public Shop findByIdWithList(String shopId) {
+		Shop result;
 		Optional<Shop> shopOpt = shopRepository.findById(shopId);
 		
 		if(shopOpt.isPresent()){
-			LOG.info("##### List size: " + shopOpt.get().getFoodList().size() + " #####");
-			return shopOpt.get();
+			LOG.info("##### Shop menu size: " + shopOpt.get().getFoodList().size() + " #####");
+			result = shopOpt.get();
+		} else {
+			throw new BandoException(BandoStatus.NO_DATA);
 		}
 		
-		return null;
+		return result;
 	}
 
 	@Override

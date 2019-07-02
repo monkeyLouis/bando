@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,7 +24,10 @@ import org.thymeleaf.util.StringUtils;
 import hello.cache.RoleCache;
 import hello.domain.Member;
 import hello.domain.RoleOfMember;
+import hello.domain.dto.EditUserVo;
 import hello.domain.form.RegisterForm;
+import hello.enums.BandoStatus;
+import hello.exception.BandoException;
 import hello.repository.MemberRepository;
 import hello.repository.RoleOfMemberRepository;
 import hello.service.MailService;
@@ -45,6 +52,8 @@ public class UserServiceImpl implements UserService {
 	private MailService mailService;
 	@Autowired
 	private PasswordEncoder encoder;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	
 //	@SuppressWarnings("deprecation")
 	@Override
@@ -54,9 +63,9 @@ public class UserServiceImpl implements UserService {
 		if (user == null)
 			throw new UsernameNotFoundException("This is in the UserService, username NOT FOUND");
 		
-//		LOG.info("### In UserServiceImpl: {} ###", user.getUsername());
-		
-		return User.withUserDetails(user).build();
+		LOG.info("### In UserServiceImpl: {} ###", user.getName());
+
+		return user;
 	}
 	
 	@Override
@@ -246,24 +255,42 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public boolean changeMemberStatus(String userPsw) {
+	public Member changeMemberStatus(String userPsw) {
 		
-		boolean result;
 		Optional<Member> opt = memRepository.findByPassword(userPsw);
-		if(opt.isPresent()) {
-			Member mem = opt.get();
-			mem.setEnabled(1);
-			memRepository.save(mem);
-			result = true;
-		} else {
-			result = false;
+		if(!opt.isPresent()) {
+			throw new BandoException(BandoStatus.DENIED);
 		}
-		
-		return result;
+		Member mem = opt.get();
+		mem.setEnabled(1);
+		Member member = memRepository.save(mem);
+		Authentication authentication =
+				new UsernamePasswordAuthenticationToken(member, null, AuthorityUtils.createAuthorityList("ROLE_USER"));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return member;
 	}
 	
-	private void loginDirectly(String email) {
-		loadUserByUsername(email);
+	@Override
+	public void loginByAuthManager(String username, String password) {
+		UsernamePasswordAuthenticationToken authReq
+		 = new UsernamePasswordAuthenticationToken(username, password);
+		Authentication auth = authenticationManager.authenticate(authReq);
+		SecurityContextHolder.getContext().setAuthentication(auth);
+	}
+
+	@Override
+	public void editMember(String username, EditUserVo userInput) {
+		Member member = findByUsername(username);
+		if (!encoder.matches(userInput.getOpw(), member.getPassword())) {
+			throw new BandoException(BandoStatus.DENIED);
+		}
+		member.setName(userInput.getName());
+		if (userInput.isChgPw()) {
+			member.setPassword(encoder.encode(userInput.getNpw()));
+		}
+		memRepository.save(member);
+		Authentication authentication = new UsernamePasswordAuthenticationToken(member, member.getPassword(), member.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(authentication);
 	}
 	
 }

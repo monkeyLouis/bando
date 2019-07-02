@@ -3,6 +3,7 @@ package hello.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,12 +11,12 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name="MEMBER")
-public class Member implements Serializable, UserDetails {
+public class Member extends User implements Serializable {
 	
 	@Id
 	@Column(name="USERNAME", nullable=false)
@@ -47,8 +48,13 @@ public class Member implements Serializable, UserDetails {
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<RoleOfMember> roleList;
 	
-	public Member() {}
+	public Member() { 
+		super("Type User Name", "PWD", new HashSet()); 
+	}
 	
+	public Member(UserDetails details) {
+		super(details.getUsername(), details.getPassword(), details.getAuthorities());
+	}
 	
 	public String getUsername() {
 		return username;
@@ -82,8 +88,8 @@ public class Member implements Serializable, UserDetails {
 	}
 
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+	public Collection<GrantedAuthority> getAuthorities() {
+		Collection<GrantedAuthority> authorities = new ArrayList<>();
 		this.roleList.stream().forEach(role ->{
 			authorities.add(new SimpleGrantedAuthority(role.getRoleOfMemberPk().getFkRole().getName()));
 		});

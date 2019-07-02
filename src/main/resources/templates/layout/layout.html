@@ -1,25 +1,153 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
 <head th:replace="fregments/header :: header">
+    <meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
     <title>Header</title>
 </head>
 <body>
 
 	<div th:replace="fregments/navigation :: navigation"></div>
-
+	
 	<div class="layout-body">
 		<h1 layout:fragment="header">Hello World !!</h1>
 		<div layout:fragment="content"></div>
+		<th:block layout:fragment="script"></th:block>
 	</div>
+	
+	<div id="memModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">修改會員資料</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="mail">信箱:</label>
+						<h5 id="mail">{{ mail }}</h5>
+					</div>
+					<div class="form-group">
+						<label for="name">暱稱:</label>
+						<input type="text" class="form-control" id="name" v-model="name">
+					</div>
+					<div class="form-group">
+						<label for="old-pw">原密碼:</label>
+						<input type="password" class="form-control" id="old-pw" v-model="opw">
+					</div>
+					<template v-if="chgPw">
+						<div class="form-group">
+							<label for="new-pw-a">請輸入新密碼:</label>
+							<input type="password" class="form-control" id="new-pw-a" v-model="npw1">
+						</div>
+						<div class="form-group">
+							<label for="new-pw-b">請再次確認新密碼:</label>
+							<input type="password" class="form-control" id="new-pw-b" v-model="npw2">
+						</div>
+						<a @click="notToChgPw()">不想改密碼了</a>
+					</template>
+					<template v-else>
+						<a @click="toChgPw()">我要改密碼</a>
+					</template>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" @click="submit()">送出</button>
+					<button type="button" class="btn btn-default" @click="closeModal()">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div id="errorModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+				<div style="font-size: 3vh; text-align: center">{{ msg }}</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+	<script>
+		function openMemModal() {
+			$("#memModal").modal();
+		}
+		
+		var memModal = new Vue({
+			el: "#memModal",
+			data: {
+				mail: "[[${#authentication.principal.username}]]",
+				name: "[[${#authentication.principal.name}]]",
+				opw: "",
+				npw1: "",
+				npw2: "",
+				chgPw: false
+			},
+			methods: {
+				closeModal: function() {
+					$("#memModal").modal('hide');
+				},
+				toChgPw: function() {
+					this.chgPw = true;
+				},
+				notToChgPw: function() {
+					this.chgPw = false;
+				},
+				submit: function() {
+					if (this.chgPw && !this.isNpwMatch()) {	
+						alert("你的新密碼打錯了");
+						return;
+					}
+					axios.post("[[@{/edit}]]", {
+						name: this.name,
+						opw: this.opw,
+						npw: this.npw1,
+						chgPw: this.chgPw
+					})
+					.then(function(response) {
+						console.log(response);
+						if(response.data.status != "0") {
+							errorModal.msg = "密碼錯誤，請重新操作";
+							errorModal.alert();
+							return;
+						}
+						$("#nav-name").html(memModal.name);
+						memModal.closeModal();
+						errorModal.msg = "修改成功";
+						errorModal.alert();
+					})
+					.catch(function(error) {
+						console.log(error);
+					})
+				},
+				isNpwMatch: function() {
+					return this.npw1 === this.npw2;
+				}
+			}
+		});
+		
+		var errorModal = new Vue({
+			el:"#errorModal",
+			data: {
+				msg: ""
+			},
+			methods: {
+				alert: function() {
+					$("#errorModal").modal();
+					window.setTimeout(( () => $("#errorModal").modal('hide') ), 1500);
+				}
+			}
+		});
+	</script>
 
 	<div th:replace="fregments/footer :: footer"></div>
 
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 	<script th:inline="javascript" th:src="/js/test.js"></script> -->
-		
-	<script th:inline="javascript">
-	</script>
+	<script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
 
 </body>
 </html>

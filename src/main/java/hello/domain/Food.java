@@ -47,7 +47,7 @@ public class Food implements Serializable {
 		this.foodId = foodId;
 	}
 
-	public Shop getShop() {
+	public Shop whichShop() {
 		return shop;
 	}
 

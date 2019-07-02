@@ -2,6 +2,7 @@ package hello.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="SHOP")
@@ -32,6 +35,7 @@ public class Shop implements Serializable {
 	@Column(name="S_ADDR")
 	private String s_addr;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="shop", fetch=FetchType.LAZY, targetEntity=Food.class)
 	private List<Food> foodList;
 
@@ -73,6 +77,12 @@ public class Shop implements Serializable {
 
 	public void setFoodList(List<Food> foodList) {
 		this.foodList = foodList;
+	}
+	
+	public List<Food> getFoods() {
+		return foodList.stream()
+						.filter(food -> food.getF_on() == 1 )
+						.collect(Collectors.toList());
 	}
 
 	@Override
