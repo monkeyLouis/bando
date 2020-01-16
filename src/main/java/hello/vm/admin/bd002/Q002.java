@@ -5,16 +5,20 @@ import static hello.enums.PayStatus.PAYED;
 
 import java.util.Date;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zkplus.spring.DelegatingVariableResolver;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 
 import hello.domain.OrderMaster;
 import hello.domain.dto.StatusVo;
@@ -75,6 +79,45 @@ public class Q002 {
 	}
 	
 	@Command
+	@NotifyChange({"omListModel","omSel"})
+	public void deletePay(@BindingParam("omTarget") OrderMaster om) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("確認刪除訂單:\n 訂購日期: ")
+		  .append(timeStr(om.getOmDate()))
+		  .append("\n訂購者: ")
+		  .append(om.getMember().getName());
+		Messagebox.show(sb.toString(), "刪除訂單", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION,
+		        new EventListener<Event>() {
+			        @Override
+			        public void onEvent(Event evt) throws Exception {
+				        try {
+					        if ((Messagebox.ON_OK).equals(evt.getName())) {
+
+					    		orderMasterSrvc.delete(om);
+					    		omSel = null;
+					    		omListModel.remove(om);
+					        	
+					        	Messagebox.show("刪除成功", "系統訊息", Messagebox.OK , Messagebox.INFORMATION, new EventListener<Event>() {
+					        		@Override
+					        		public void onEvent(Event evt) throws Exception {
+					        			try {
+					        				if ((Messagebox.ON_OK).equals(evt.getName())) {
+					        				}
+					        			} catch (Exception e) {
+					        				LOG.error("returnEquiment", e);
+					        			}
+					        		}
+					        	});
+					        }
+				        } catch (Exception e) {
+					        LOG.error("returnEquiment", e);
+				        }
+			        }
+		        });
+
+	}
+	
+	@Command
 	@NotifyChange({"omListModel", "omSel"})
 	public void query(){
 		doQuery();
@@ -130,4 +173,18 @@ public class Q002 {
 		this.statusSelected = statusSelected;
 	}
 	
+	private String timeStr(Date date) {
+		DateTime datetime = new DateTime(date);
+		StringBuilder sb = new StringBuilder();
+		sb.append(datetime.getYear())
+		  .append("年")
+		  .append(datetime.getMonthOfYear())
+		  .append("月")
+		  .append(datetime.getDayOfMonth())
+		  .append("日 ")
+		  .append(datetime.getHourOfDay())
+		  .append(":")
+		  .append(datetime.getMinuteOfHour());
+		return sb.toString();
+	}
 }

@@ -62,8 +62,7 @@ public class UserServiceImpl implements UserService {
 		Member user = findByUsername(s);
 		if (user == null)
 			throw new UsernameNotFoundException("This is in the UserService, username NOT FOUND");
-		
-		LOG.info("### In UserServiceImpl: {} ###", user.getName());
+		LOG.info("### {} LOGIN ###", user.getName());
 
 		return user;
 	}

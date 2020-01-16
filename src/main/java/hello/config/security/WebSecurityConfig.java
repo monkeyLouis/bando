@@ -126,7 +126,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/turnUp**")
             .antMatchers("/favicon.ico")
             .antMatchers("/zkau/**")
-            .antMatchers("/webjars/**", "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**", "/fonts/**");
+            .antMatchers("/webjars/**", "/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/fonts/**");
     }
     
 //    @Bean

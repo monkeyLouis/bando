@@ -10,12 +10,17 @@
 <div id="team" class="container" layout:fragment="content">
 	<template v-if="isScheduleEmpty()">
 		<div class="row">
-	        <div class="panel panel-default status-panel">
-				<div class="panel-body" id="shopInfo">
-			    	<h1 class="store-name">還沒開放訂購喔</h1>
-			    	<h2 style="text-align:center">快叫班代開團啦</h2>
+	        <div class="panel-group">
+		        <div class="panel panel-default status-panel">
+					<div class="panel-body" id="shopInfo">
+				    	<h1 class="store-name">還沒開放訂購喔</h1>
+				    	<h2 style="text-align:center">快叫班代開團啦</h2>
+					</div>
 				</div>
 			</div>
+			<div style="padding: 5vh 0">
+	        	<img style="width:30%;display: block;margin-left: auto;margin-right: auto;" th:src="@{/img/close.png}">
+	        </div>
 		</div>
 	</template>
 	<template v-else>
@@ -26,19 +31,17 @@
 			    	<h1 class="store-name">{{ schedule.theShopOfDay.s_name }}</h1>
 			    	<h2 class="count-down">
 			    		<template v-if="schedule.orderStatus === '1'">
-			    			<span class="time-prefix">　剩</span>
-			    		 	 23:59:59 
+			    			<span class="time-prefix">　　倒數</span>
+			    		 	{{ countDownText }}
 			    			<span class="time-subfix">開始訂購</span>
 			    		</template>
 			    		<template v-else-if="schedule.orderStatus === '2'">
-			    			<span class="time-prefix">　剩</span>
-			    			 23:59:59 
+			    			<span class="time-prefix">　　還剩</span>
+			    			{{ countDownText }} 
 			    			<span class="time-subfix">結束訂購</span>
 			    		</template>
 			    		<template v-else-if="schedule.orderStatus === '3'">
-			    			<span class="time-prefix">　訂購在</span>
-			    			 23:59:59 
-			    			<span class="time-subfix"> 前結束</span>
+			    			<span class="time-prefix">訂購已結束</span>
 			    		</template>
 			    	</h2>
 				</div>
@@ -47,25 +50,85 @@
 	    <template v-if="schedule.openOrder">
 			<food-card
 				v-for="food in schedule.theShopOfDay.foods"
+				v-bind:food="food"
 				v-bind:key="food.foodId"
-				v-bind:num="food.foodId"
-				v-bind:name="food.f_name"
-				v-bind:price="food.f_price"
 			></food-card>
+		</template>
+		<template v-else>
+  			<div class="panel-body" style="padding:5vh 0">
+				<img style="width:30%;display: block;margin-left: auto;margin-right: auto;" th:src="@{/img/close.png}">
+  			</div>
 		</template>
 	</template> 
 </div>
 	
 <div layout:fragment="header">
-	<!-- <h1>This Text is in the index.html</h1> -->
+	<!-- Modal -->
+	<div id="buyModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div style="padding:0px 20px">
+						<div class="row">
+							<strong style="font-size: 2vw">訂購{{ food.name }}</strong>
+						</div>
+						<div class="row">
+							<div class="panel panel-default" style="margin-bottom: 5px">
+								<div class="panel-body">
+									<table>
+										<tbody>
+											<tr>
+												<th style="width: 30%; padding:10px 0px">單價</th>
+												<td><strong style="font-size: 2vw" class="form-control-static">{{ '$ ' + food.price }}</strong></td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">數量</th>
+												<td>
+													<div class="input-group">
+														<div class="input-group-btn">
+															<button class="btn btn-default" @click="minus">
+																<i class="glyphicon glyphicon-minus"></i>
+															</button>
+														</div>
+														<input type="text" style="text-align: center" class="form-control" v-model="count">
+														<div class="input-group-btn" @click="plus">
+															<button class="btn btn-default">
+																<i class="glyphicon glyphicon-plus"></i>
+															</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">總價</th>
+												<td><strong style="font-size: 2vw">{{ '$ ' + total }}</strong></td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">附註</th>
+												<td>
+													<textarea type="text" rows="2" class="form-control" style="resize: none" v-model="note" placeholder="選填，20字內(Ex:加飯/飯少)"></textarea>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<button type="button" class="btn btn-success btn-block btn-lg" @click="addInCart">加入購物車</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
- <th:block layout:fragment="script">
+<th:block layout:fragment="script">
 <script>
 	Vue.component('food-card',{
-		props: [ 'num', 'price', 'name' ],
+		props: [ 'food' ],
 		template: `
 			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="image-flip">
+				<div class="image-flip" style="cursor:pointer" @click="pop(food)">
 					<div class="mainflip">
 						<div class="frontside">
 							<div class="card">
@@ -74,12 +137,12 @@
 										<div class="col-sm-2 col-xs-2 col-md-2">
 										</div>
 										<div class="col-sm-8 col-xs-8 col-md-8">
-											<div class="priceCircle">{{ '$' + price }}</div>
+											<div class="priceCircle">{{ '$' + food.f_price }}</div>
 										</div>
 										<div class="col-sm-2 col-xs-2 col-md-2">
 										</div>
 									</div>
-									<h1 class="card-title">{{ name }}</h1>
+									<h1 class="card-title">{{ food.f_name }}</h1>
 								</div>
 							</div>
 						</div>
@@ -88,7 +151,7 @@
 								<div class="card-body text-center">
 									<div class="align-center" style="padding: 20px; width: 100%">
 										<h1 style="text-align: center; font-size: 4em" class="card-title">訂 購</h1>
-										<h3 style="text-align: center; font-size: 3em" class="card-title">{{ name }}</h3>
+										<h3 style="text-align: center; font-size: 3em" class="card-title">{{ food.f_name }}</h3>
 									</div>
 								</div>
 							</div>
@@ -96,13 +159,26 @@
 					</div>
 				</div>
 			</div>
-		`
+		`,
+		methods: {
+			pop: function(food) {
+				$("#buyModal").modal();
+				buyModalVm.food.id = food.foodId;
+				buyModalVm.food.name = food.f_name;
+				buyModalVm.food.price = food.f_price;
+				buyModalVm.count = 1;
+				buyModalVm.note = "";
+			}
+		}
 	})
 	
 	var listVm = new Vue({
 		el: "#team",
 		data: {
-			schedule: { }
+			schedule: { },
+			interval: "",
+			countDownText: "",
+			statusText: ""
 		},
 		methods: {
 			getSchedule: function() {
@@ -111,7 +187,13 @@
 				axios.get(url)
 					.then(function(response){
 						listVm.schedule = response.data.data;
-						console.log(response.data.data);
+						console.log("data: " + response.data.data);
+						if(!isEmpty(response.data.data)) {
+							listVm.timerCount(listVm.schedule.startDateMilSec,listVm.schedule.endDateMilSec);
+							listVm.interval = setInterval(() => {
+						    	listVm.timerCount(listVm.schedule.startDateMilSec,listVm.schedule.endDateMilSec);
+						    }, 1000);
+						}
 					})
 					.catch(function(error){
 						console.log("error: " + error);
@@ -128,7 +210,56 @@
 			},
 			isAfterOrder: function() {
 				return !this.schedule.openOrder && this.schedule.closeOrder;
-			}
+			},
+			timerCount: function(start,end){
+		        // Get todays date and time
+		        var now = new Date().getTime();
+		        
+		        // Find the distance between now an the count down date
+		        var distance = start - now;
+		        var passTime =  end - now;
+		        
+		        if(distance < 0 && passTime < 0){
+		        	listVm.schedule.orderStatus = "3";
+		        	listVm.schedule.openOrder = false;
+		        	listVm.countDownText = "";
+		            clearInterval(listVm.interval);
+		            return;
+		        }else if(distance < 0 && passTime > 0){
+					if(listVm.schedule.orderStatus != "2") {
+						listVm.schedule.orderStatus = "2";
+					}
+		        	listVm.schedule.openOrder = true;
+		        	listVm.countDownText = this.calcTime(passTime);
+		        	listVm.statusText = "後結束訂購";
+
+		        } else if( distance > 0 && passTime > 0 ){
+					if(listVm.schedule.orderStatus != "1") {
+						listVm.schedule.orderStatus = "1";
+					}
+		        	listVm.schedule.openOrder = false;
+		        	listVm.countDownText = listVm.calcTime(distance); 
+		        	listVm.statusText = "後開始訂購";
+		        }
+		    },
+		    calcTime: function(dist){
+		      // Time calculations for days, hours, minutes and seconds
+		        var hours = Math.floor(dist / (1000 * 60 * 60 ));
+		        var minutes = Math.floor((dist % (1000 * 60 * 60)) / (1000 * 60));
+		        var seconds = Math.floor((dist % (1000 * 60)) / 1000);
+		        
+		        if (hours < 10) {
+		        	hours = "0" + hours;
+		        }
+		        if (minutes < 10) {
+		        	minutes = "0" + minutes;
+		        }
+		        if (seconds < 10) {
+		        	seconds = "0" + seconds;
+		        }
+		        
+		        return hours + ":" + minutes + ":" + seconds;
+		    }
 		},
 		created: function() {
 			this.getSchedule();
@@ -161,6 +292,64 @@
 
 	    return true;
 	}
+	
+	var buyModalVm = new Vue({
+		el: "#buyModal",
+		data: {
+			food: {
+				id: "",
+				name: "",
+				price: 0
+			},
+			count: 1,
+			note: ""
+		},
+		methods: {
+			plus: function() {
+				this.count += 1;
+			},
+			minus: function() {
+				this.count -= 1;
+			},
+			addInCart: function() {
+				var url = "[[@{/cart/add}]]/" + listVm.schedule.scheduleId;
+				var good = this.$data;
+				console.log(good);
+				axios.post(url, good)
+					.then(function(response) {
+						console.log(response);
+						if (response.data.status == 0 ) {
+							cartModal.getContents();
+							$("#buyModal").modal("hide");
+							window.setTimeout(( () => errorModal.alert("已加入購物車") ), 100);
+						} else {
+							window.setTimeout(( () => errorModal.alert(response.data.message+"，請稍後再試") ), 100);
+						}
+					})
+					.catch(function(error) {
+						console.log(error);
+					})
+			}
+		},
+		computed: {
+			total: function() {
+				return this.food.price * this.count
+			}
+		},
+		watch: {
+			count: function(newVal, oldVal) {
+				if(newVal < 1) {
+					this.count = 1;
+				}
+				if(newVal > 5) {
+					this.count = 5;
+				}
+				if(isNaN(newVal)) {
+					this.count = oldVal;
+				}
+			}
+		}
+	});
 	
 </script>
 </th:block>

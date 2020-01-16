@@ -42,6 +42,9 @@ public class Schedule {
 	@Column(name="SCHE_END_DATE")
 	private Date endDate;
 	
+	@Column(name="SCHE_STATUS")
+	private String status;
+	
 	@ManyToOne
 	@JoinColumn(name="SHOPID", nullable=false)
 	private Shop theShopOfDay;
@@ -65,11 +68,17 @@ public class Schedule {
 	public Date getStartDate() {
 		return startDate;
 	}
+	public Long getStartDateMilSec() {
+		return startDate.getTime();
+	}
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 	public Date getEndDate() {
 		return endDate;
+	}
+	public Long getEndDateMilSec() {
+		return endDate.getTime();
 	}
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
@@ -79,6 +88,12 @@ public class Schedule {
 	}
 	public void setTheShopOfDay(Shop theShopOfDay) {
 		this.theShopOfDay = theShopOfDay;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	public List<OrderMaster> getOrderMasterListOfDay() {
 		return orderMasterListOfDay;
@@ -112,23 +127,13 @@ public class Schedule {
 	public boolean isCloseOrder() {
 		return new Date().after(this.endDate);
 	}
-	public long getOpenOrderTime() {
-		return getSecBetweenAandB(this.startDate, new Date());
-	}
-	public long getCloseOrderTime() {
-		return getSecBetweenAandB(this.endDate, new Date() );
-	}
-	private long getSecBetweenAandB(Date dateA, Date dateB) {
-		long milSec = dateA.getTime() - dateB.getTime();
-		return milSec/1000;
-	}
 	public String getOrderStatus() {
 		if (!isOpenOrder() && !isCloseOrder()) {
-			return "1";
+			return "1";  // 在訂購開始時間前
 		} else if (isOpenOrder() && !isCloseOrder()) {
-			return "2";
+			return "2";  // 在訂購時間中
 		} else if (!isOpenOrder() && isCloseOrder()) {
-			return "3";
+			return "3";  // 在訂購結束 時間後
 		}
 		return "";
 	}

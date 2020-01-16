@@ -27,9 +27,14 @@
 			}, 200);	//顯示表單的時間
 		});
 	}, 2000);	//隱藏LOGO的時間
-	
+
 	$(document).ready(function() {
 		document.body.style.height = window.innerHeight;
+		$("#userName").attr('placeholder', 'Your Email');
+		$("#name").attr('placeholder', 'Your Nickname');
+		$("#formPassword").attr('placeholder', 'Your Password');
+		$("#rePassword").attr('placeholder', 'Type Password Again');
+		$("#registerForm").css('margin-block-end', '0em');
 	});
 
     $( function() {
@@ -54,13 +59,23 @@
     	});
 
 		$( "#store" ).on( "click", function() {
-			console.log("Before Click: " + $( "#ident").val());
-			$( "#ident").val("store");
-			console.log("After Click: " + $( "#ident").val());
-	  		var classList = $("#user-login").attr('class');
-			var classSet = classList.split(" ");
-	  		$( "#user-login" ).removeClass(classSet[2],1000).addClass( "panel-store", 1000);
-	   		$("#identity").html("店家");
+			var timer = setTimeout(function() {
+				$( "#loginForm" ).slideToggle(800, function(){
+					setTimeout(function() {
+						$( "#registForm" ).slideToggle(1000);
+					}, 200);	//顯示表單的時間
+				});
+			}, 0);	//隱藏LOGO的時間
+		});
+
+		$( "#noreg" ).on( "click", function() {
+			var timer = setTimeout(function() {
+				$( "#registForm" ).slideToggle(800, function(){
+					setTimeout(function() {
+						$( "#loginForm" ).slideToggle(1000);
+					}, 200);	//顯示表單的時間
+				});
+			}, 0);	//隱藏LOGO的時間
 		});
 		
 		$( "#send-email").on( "click", function() {
@@ -70,6 +85,9 @@
 				var msg = "請輸入你的 E-mail";
 				$("#message-to-user").html(msg);
 				$("#msgModal").modal();
+				setTimeout(function() {
+					$("#msgModal").modal('hide');
+				},1000);
 				return false;
 			}
 			
@@ -82,10 +100,15 @@
 		        contentType: "application/json",
 		        dataType: 'json',
 		        cache: false,
+		        async: true,
 		        url: "forgot",
 		        data: JSON.stringify(forgotInfo),
+		        beforeSend: function() {
+		  			$("#loadingModal").modal({backdrop: 'static', keyboard: false});
+		  		},
 		        success: function (result) {
 		        	console.log(result);
+		        	$("#loadingModal").modal('hide');
 		        	var msg = "";
 					if (result.status == "succeed"){
 		        		msg = "新密碼已寄至 " + $("#email-forgot").val();		        	
@@ -93,10 +116,22 @@
 						msg = "查無此帳號，請註冊";
 		        	}
 					$("#message-to-user").html(msg);
-					$("#msgModal").modal();
+					setTimeout(function() {
+						$("#msgModal").modal();
+					},100);
+					setTimeout(function() {
+						$("#msgModal").modal('hide');
+					},1000);
 		        },
 		        error: function (xhr, textStatus, thrownError) {
-		            alert(textStatus);
+		            $("#message-to-user").html("系統連線異常");
+		            $("#loadingModal").modal('hide');
+		            setTimeout(function() {
+						$("#msgModal").modal();
+					},100);
+					setTimeout(function() {
+						$("#msgModal").modal('hide');
+					},1000);
 		        }
 		    });
 		});
@@ -110,14 +145,36 @@
 		  			type: "post",
 		  			data: str,
 		  			url: "signUp",
-		  			async: false,
+		  			async: true,
 		  			dataType: "json",
+		  			beforeSend: function() {
+		  				$("#loadingModal").modal({backdrop: 'static', keyboard: false});
+		  			},
 		  			success: function(result) {
-		  				alert(result.status);
+		  				$("#loadingModal").modal('hide');
+		  				if (result.status == "success"){
+		  					$("#message-to-user").html("註冊信已寄出");
+		  				} else {
+		  					$("#message-to-user").html("註冊資料有誤");
+		  				}
+		  				setTimeout(function() {
+							$("#msgModal").modal();
+						},100);
+						setTimeout(function() {
+							$("#msgModal").modal('hide');
+						},2000);
 		  				console.log(result);
 		  			},
 		  			error: function (xhr, textStatus, thrownError) {
-				        alert(textStatus);
+				    	$("#loadingModal").modal('hide');
+				    	$("#message-to-user").html("系統連線異常");
+				    	setTimeout(function() {
+							$("#msgModal").modal();
+						},100);
+						setTimeout(function() {
+							$("#msgModal").modal('hide');
+						},2000);
+
 				    }
 	  			});
 		  	}
@@ -144,9 +201,11 @@
     				rangelength: [1,12]
     			},
     			"formPassword": {
+    				required: true,
     				rangelength: [6,15]
     			},
     			"rePassword": {
+    				required: true,
     				rangelength: [6,15],
     				equalTo : "#formPassword"
     			}
@@ -161,9 +220,11 @@
     				rangelength: "長度請介於{0}~{1}字"
     			},
     			"formPassword": {
+    				required: "請輸入密碼",
     				rangelength: "密碼長度請介於{0}~{1}字"
     			},
     			"rePassword": {
+    				required: "請確認密碼",
     				rangelength: "密碼長度請介於{0}~{1}字",
     				equalTo: "與密碼不符"
     			}
@@ -196,7 +257,7 @@
 								<h2><strong>請選擇角色</strong></h2><br>
 								<span class="span-pic" id="deliver"><i class="fa fa-cog"></i></span>
 								<span class="span-pic" id="user"><i class="fa fa-user"></i></span>
-								<span class="span-pic" id="store"><i class="fa fa-home"></i></span>
+								<span class="span-pic" id="store" title="註冊"><i class="fa fa-list"></i></span>
 								<br><br>
 								<h4>以 <strong id="identity">一般會員</strong> 身分登入</h4>
 								<c:if test="${param.error ne null}">
@@ -226,48 +287,74 @@
 						</div>
 					</div>
 				</div>
+				<div id="registForm" class="container" style="display:none">
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<div id="user-reg" class="panel panel-default panel-store">
+								<h4 style="color: white;text-align: center"><strong>註冊會員</strong></h4>
+								<div class="panel-body">
+									<form:form method="post" modelAttribute="registerForm" servletRelativeAction="#">
+										<div class="form-group" style="margin-bottom: 5px">
+											<form:input type="email" path="userName" class="form-control" />
+											<div class="row">
+												<div class="col-sm-2">
+													<span>&nbsp;</span>
+												</div>
+												<div class="col-sm-10">
+													<label id="userName-error" class="error" for="userName"><span>&nbsp;</span></label>
+													<form:errors class="errorMsg" path="userName" />
+												</div>
+											</div>
+			  							</div>
+			  							<div class="form-group" style="margin-bottom: 5px">
+											<form:input type="text" path="name" class="form-control" />
+											<div class="row">
+												<div class="col-sm-2">
+													<span>&nbsp;</span>
+												</div>
+												<div class="col-sm-10">
+													<label id="name-error" class="error" for="name"><span>&nbsp;</span></label>
+													<form:errors class="errorMsg" path="name" />
+												</div>
+											</div>
+			  							</div>
+										<div class="form-group" style="margin-bottom: 5px">
+											<form:input type="password" path="formPassword" class="form-control" />
+											<div class="row">
+												<div class="col-sm-2">
+													<span>&nbsp;</span>
+												</div>
+												<div class="col-sm-10">
+													<label id="formPassword-error" class="error" for="formPassword"><span>&nbsp;</span></label>
+													<form:errors class="errorMsg" path="formPassword" />
+												</div>
+											</div>
+										</div>
+										<div class="form-group" style="margin-bottom: 5px">
+											<form:input type="password" path="rePassword" class="form-control" />
+											<div class="row">
+												<div class="col-sm-2">
+													<span>&nbsp;</span>
+												</div>
+												<div class="col-sm-10">
+													<label id="rePassword-error" class="error" for="rePassword"><span>&nbsp;</span></label>
+													<form:errors class="errorMsg" path="rePassword" />
+												</div>
+											</div>
+										</div>
+			  						</form:form>
+		  							<button type="button" id="registerSubmit" class="btn btn-success btn-lg btn-block">註冊</button>
+		  							<button type="button" id="noreg" class="btn btn-primary btn-block">取消</button>
+		  						</div>
+	  						</div>
+						</div>
+					</div>
+				</div> 
 	        	<h1 class=" shadow">The Best Way to Color Your Life</h1>
 			</div>
 	    <!-- change Position -->
 	    </div>
     </div>
-    
-    <div class="infos color_1">
-		<div class="container-fluid">
-			<div class="row">
-				<h2 style="text-align: center;">會員註冊</h2>
-				<div class="container form-container">
-					<form:form method="post" modelAttribute="registerForm" servletRelativeAction="#">
-						<div class="form-group">
-					    	<form:label path="userName">你的E-mail:</form:label>
-							<form:input type="email" path="userName" class="form-control" />
-							<label id="userName-error" class="error" for="userName"><span>&nbsp;</span></label>
-							<form:errors class="errorMsg" path="userName" />
-	  					</div>
-	  					<div class="form-group">
-					    	<form:label path="name">你的暱稱:</form:label>
-							<form:input type="text" path="name" class="form-control" />
-							<label id="name-error" class="error" for="name"><span>&nbsp;</span></label>
-							<form:errors class="errorMsg" path="name" />
-	  					</div>
-						<div class="form-group">
-							<form:label path="formPassword">密碼:</form:label>
-							<form:input type="password" path="formPassword" class="form-control" />
-							<label id="formPassword-error" class="error" for="formPassword"><span>&nbsp;</span></label>
-							<form:errors class="errorMsg" path="formPassword" />
-						</div>
-						<div class="form-group">
-							<form:label path="rePassword">再次輸入密碼:</form:label>
-							<form:input type="password" path="rePassword" class="form-control" />
-							<label id="rePassword-error" class="error" for="rePassword"><span>&nbsp;</span></label>
-							<form:errors class="errorMsg" path="rePassword" />
-						</div>
-	  				</form:form>
-	  				<button type="button" id="registerSubmit" class="btn btn-default btn-block">Submit</button>
-				</div>
-			</div>
-		</div>
-	</div>
 	
 	<!-- Modal -->
 	<div id="myModal" class="modal fade" role="dialog">
@@ -298,15 +385,26 @@
 		<div class="modal-dialog modal-sm">
 			<!-- Modal content-->
 			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">System Message</h4>
-				</div>
 				<div class="modal-body">
-					<h4 id="message-to-user"></h4>
+					<h4 id="message-to-user" style="text-align: center"></h4>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-success" data-dismiss="modal" >Confirm</button>
+			</div>
+		</div>
+	</div>
+	<!-- Message Modal -->
+	<div id="loadingModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm" style="width:20%">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class=row>
+						<div class="col-sm-offset-1 col-sm-4" style="display: inline-block;padding-right: 5px">
+							<img style="width: 40px;" src="<%=request.getContextPath()%>/video/spinner.gif">
+						</div>
+						<div class="col-sm-7" style="display: flex; align-items: center;padding-left: 5px">
+							<h4><strong>系統發信中</strong></h4>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

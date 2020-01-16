@@ -16,11 +16,10 @@
 		<hlayout vflex="10">
 			<vlayout hflex="1">
 				<navbar orient="vertical">
-					<navitem label="日程表管理" />
 					<navitem label="便當繳款管理" selected="true" onClick="@command('navigate', page='q002')" />
-					<navitem label="訂單總結" onClick="@command('navigate', page='q003')" />
+					<navitem label="訂購行程管理" onClick="@command('navigate', page='q003')" />
 					<navitem label="商家/商品管理" onClick="@command('navigate', page='q001')" />
-					<navitem label="會員權限管理" />
+					<!-- <navitem label="會員權限管理" /> -->
 					<navitem label="切換至會員" href="/index" />
 					<navitem label="登出" href="/logout" />
 				</navbar>

@@ -11,4 +11,5 @@ public interface ScheduleService {
 	List<Schedule> findByDate(Date date);
 	List<Schedule> findByTime(Date date, int min);
 	List<Schedule> findByTimeBetween(Date dateStart, Date dateEnd);
+	Schedule saveSchedule(Schedule schedule);
 }

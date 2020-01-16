@@ -40,7 +40,7 @@ public class MemberController {
 		try {
 			LOG.info("GET IN TURN UP");
 			userSvc.changeMemberStatus(user);
-			page = "redirect:member/index";
+			page = "redirect:/index";
 		} catch(BandoException be) {
 			page = "jsp/login";
 		}
@@ -56,6 +56,11 @@ public class MemberController {
 		public void setEmail(String email) {
 			this.email = email;
 		}
+	}
+	
+	@RequestMapping("/records")
+	public String goRecords() {
+		return "member/content";
 	}
 	
 }

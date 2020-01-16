@@ -53,7 +53,7 @@
 					</template>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" @click="submit()">送出</button>
+					<button type="button" class="btn btn-success" @click="submit()">送出</button>
 					<button type="button" class="btn btn-default" @click="closeModal()">Close</button>
 				</div>
 			</div>
@@ -67,8 +67,146 @@
 				<div class="modal-body">
 				<div style="font-size: 3vh; text-align: center">{{ msg }}</div>
 				</div>
+			</div>	
+		</div>
+	</div>
+	<!-- Cart Modal -->
+	<div id="cartModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">購物車</h4>
+				</div>
+				<div class="modal-body">
+					<template v-if="hasGoods">
+						<table class="table" style="border: 1px solid #ddd;">
+							<thead>
+								<tr class="info">
+									<th style="width: 25%">商品名稱</th>
+									<th style="width: 10%;text-align:center">數量</th>
+									<th style="width: 10%;text-align:center">價格</th>
+									<th style="width: 35%">附註</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr is="cart-row"
+									v-for="good in contents"
+									v-bind:key="good.food.id"
+									v-bind:good="good"
+									@edit="edit(good)"
+									@delete="del(good)">
+								</tr>
+							</tbody>
+							<tbody>
+								<tr style="background-color:#eee;">
+									<td colspan="2" style="padding: 10px 20px; vertical-align: middle;">
+										<span style="font-size: 2vw">總金額：</span>
+									</td>
+									<td colspan="3" align="right" style="padding: 10px 20px; vertical-align: middle;">
+										<strong style="font-size: 3vw">{{ '$ ' + total }} </strong>
+										<span style="font-size: 2vw">元</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<button type="button" class="btn btn-success btn-block btn-lg" @click="submit()">結帳</button>
+					</template>
+					<template v-else>
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<h4 style="text-align:center"><strong style="color: #999">購物車跟你的肚子一樣，是空的</strong></h4>
+								<div style="padding: 5vh 0">
+									<img style="width:30%;display: block;margin-left: auto;margin-right: auto;" th:src="@{/img/cry.jpg}">
+								<div>
+							</div>
+						</div>
+					</template>
+				</div>
 			</div>
-		
+		</div>
+	</div>
+	<!-- Modal -->
+	<div id="editModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-body">
+					<div style="padding:0px 20px">
+						<div class="row">
+							<strong style="font-size: 2vw">修改{{ food.name }}</strong>
+						</div>
+						<div class="row">
+							<div class="panel panel-default" style="margin-bottom: 5px">
+								<div class="panel-body">
+									<table>
+										<tbody>
+											<tr>
+												<th style="width: 30%; padding:10px 0px">單價</th>
+												<td><strong style="font-size: 2vw" class="form-control-static">{{ '$ ' + food.price }}</strong></td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">數量</th>
+												<td>
+													<div class="input-group">
+														<div class="input-group-btn">
+															<button class="btn btn-default" @click="minus">
+																<i class="glyphicon glyphicon-minus"></i>
+															</button>
+														</div>
+														<input type="text" style="text-align: center" class="form-control" v-model="count">
+														<div class="input-group-btn" @click="plus">
+															<button class="btn btn-default">
+																<i class="glyphicon glyphicon-plus"></i>
+															</button>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">總價</th>
+												<td><strong style="font-size: 2vw">{{ '$ ' + total }}</strong></td>
+											</tr>
+											<tr>
+												<th style="padding:10px 0px">附註</th>
+												<td>
+													<textarea type="text" rows="2" class="form-control" style="resize: none" v-model="note" placeholder="選填，20字內(Ex:加飯/飯少)"></textarea>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<button type="button" class="btn btn-success btn-block" @click="submit">修改訂單</button>
+							<button type="button" class="btn btn-default btn-block" @click="cancel">回購物車</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal -->
+	<div id="confirmModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header" style="background-color: red; color: white">
+					<h4 class="modal-title"><strong>你即將刪除該商品</strong></h4>
+				</div>
+				<div class="modal-body">
+					<h4 style="text-align: center;word-break: break-all;">確定不要<strong>{{ food.name }}</strong>了嗎?</h4>
+					<div class="row" style="padding: 10px 2vw 0 2vw">
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-danger btn-block" @click="submit">確定</button>
+						</div>
+						<div class="col-sm-6">
+							<button type="button" class="btn btn-default btn-block" @click="cancel">取消</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	
@@ -136,17 +274,231 @@
 				msg: ""
 			},
 			methods: {
-				alert: function() {
+				alert: function(msg) {
+					this.msg = msg;
 					$("#errorModal").modal();
 					window.setTimeout(( () => $("#errorModal").modal('hide') ), 1500);
 				}
 			}
 		});
+		
+		function openCart() {
+			$("#cartModal").modal();
+		}
+		
+		var cartRow = {
+			props: ['good'], 
+			template: `
+				<tr>
+					<td style="vertical-align:middle;">{{ good.food.name }}</td>
+					<td style="vertical-align:middle;text-align:center">{{ good.count }}</td>
+					<td style="vertical-align:middle;text-align:center">{{ totalPrice }}</td>
+					<td style="vertical-align:middle;">{{ good.note }}</td>
+					<td>
+						<button class="btn btn-info" @click="$emit('edit')"><span class="glyphicon glyphicon-pencil"></span></button>
+						<button class="btn btn-danger" @click="$emit('delete')"><span class="glyphicon glyphicon-trash"></span></button>
+					</td>
+				<tr>
+			`,
+			computed: {
+				totalPrice: function(){
+					return this.good.food.price * this.good.count;
+				}
+			}
+		}
+		
+		var cartModal = new Vue({
+			el: "#cartModal",
+			data: {
+				contents: []
+			},
+			components: {
+				'cart-row': cartRow
+			},
+			methods: {
+				getContents: function() {
+					var url = "[[@{/cart}]]";
+					axios.get(url)
+						.then(function(response){
+							console.log(response.data.data)
+							cartModal.contents = response.data.data;
+						})
+						.catch(function(error){
+							console.log("error: " + error);
+						});
+				},
+				edit: function(good) {
+					editModalVm.food = good.food;
+					editModalVm.count = good.count;
+					editModalVm.note = good.note;
+					$("#cartModal").modal('hide');
+					editModalVm.open();
+				},
+				del: function(good) {
+					confirmModalVm.food = good.food;
+					confirmModalVm.count = good.count;
+					confirmModalVm.note = good.note;
+					$("#cartModal").modal('hide');
+					confirmModalVm.open();
+				},
+				submit: function() {
+					var url = "[[@{/cart/checkout}]]";
+					axios.post(url)
+						.then(function(response) {
+							console.log(response);
+							$("#cartModal").modal("hide");
+							if (response.data.status == 0 ) {
+								window.setTimeout(function() {
+									errorModal.alert("結帳成功");
+									cartModal.getContents();
+								}, 150);
+							} else {
+								window.setTimeout(( () => errorModal.alert(response.data.message+"，請稍後再試") ), 100);
+							}
+						})
+						.catch(function(error) {
+							window.setTimeout(( () => errorModal.alert("網路問題，請稍後再試") ), 100);
+							console.log(error);
+						})
+				}
+			},
+			computed: {
+				total: function() {
+					var bandoPrice = 0;
+					if (this.contents.length > 0) {
+						this.contents.forEach(function(good) {
+							bandoPrice += good.food.price * good.count;
+						});
+					}
+					return bandoPrice;
+				},
+				hasGoods: function() {
+					return this.contents.length > 0;
+				}
+			},
+			created: function(){
+				this.getContents();
+			}
+		});
+	
+		var editModalVm = new Vue({
+			el: "#editModal",
+			data: {
+				food: {
+					id: "",
+					name: "",
+					price: 0
+				},
+				count: 1,
+				note: ""
+			},
+			methods: {
+				plus: function() {
+					this.count += 1;
+				},
+				minus: function() {
+					this.count -= 1;
+				},
+				submit: function() {
+					var url = "[[@{/cart/update}]]";
+					var good = this.$data;
+					console.log(good);
+					axios.post(url, good)
+						.then(function(response) {
+							console.log(response);
+							if (response.data.status == 0 ) {
+								cartModal.getContents();
+								$("#editModal").modal("hide");
+								window.setTimeout(function() {
+									errorModal.alert("修改成功");
+									window.setTimeout(( () => $("#cartModal").modal() ), 1650);
+								}, 150);
+							} else {
+								window.setTimeout(( () => errorModal.alert(response.data.message+"，請稍後再試") ), 100);
+							}
+						})
+						.catch(function(error) {
+							window.setTimeout(( () => errorModal.alert("網路問題，請稍後再試") ), 100);
+							console.log(error);
+						})
+				},
+				open: function() {
+					window.setTimeout(( () => $("#editModal").modal() ), 150);
+				},
+				cancel: function() {
+					$("#editModal").modal('hide'); 
+					window.setTimeout(( () => $("#cartModal").modal() ), 150);
+				}
+			},
+			computed: {
+				total: function() {
+					return this.food.price * this.count
+				}
+			},
+			watch: {
+				count: function(newVal, oldVal) {
+					if(newVal < 1) {
+						this.count = 1;
+					}
+					if(newVal > 5) {
+						this.count = 5;
+					}
+					if(isNaN(newVal)) {
+						this.count = oldVal;
+					}
+				}
+			}
+		});
+		
+		var confirmModalVm = new Vue({
+			el: "#confirmModal",
+			data: {
+				food: {
+					id: "",
+					name: "",
+					price: ""
+				},
+				count: 0,
+				note: ""
+			},
+			methods: {
+				open: function() {
+					window.setTimeout(( () => $("#confirmModal").modal() ), 150);
+				},
+				cancel: function() {
+					$("#confirmModal").modal('hide');
+					window.setTimeout(( () => $("#cartModal").modal() ), 150);
+				},
+				submit: function() {
+					var url = "[[@{/cart/delete}]]";
+					var good = this.$data;
+					axios.post(url, good)
+						.then(function(response) {
+							console.log(response);
+							if (response.data.status == 0 ) {
+								cartModal.getContents();
+								$("#confirmModal").modal('hide');
+								window.setTimeout(function() {
+									errorModal.alert("修改成功");
+									window.setTimeout(( () => $("#cartModal").modal() ), 1650);
+								}, 150);
+							} else {
+								window.setTimeout(( () => errorModal.alert(response.data.message+"，請稍後再試") ), 100);
+							}
+						})
+						.catch(function(error) {
+							window.setTimeout(( () => errorModal.alert("網路問題，請稍後再試") ), 100);
+							console.log(error);
+						})
+				}
+			}
+		})
 	</script>
 
 	<div th:replace="fregments/footer :: footer"></div>
 
 	<script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery.blockUI.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 
 </body>

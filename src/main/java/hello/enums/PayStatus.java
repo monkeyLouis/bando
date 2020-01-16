@@ -8,7 +8,7 @@ package hello.enums;
  * 
  */
 public enum PayStatus {
-
+	
 	/**
 	 * 1 : 已付款
 	 */

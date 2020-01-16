@@ -1,0 +1,36 @@
+<?page title="q001" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="新增訂購行程" border="normal"
+		viewModel="@id('vm') @init('hello.vm.admin.bd003.A003')" mode="modal" width="500px"
+		height="auto" closable="true" onCancel="@command('close')">
+		<vlayout>
+			<hlayout>
+				<vlayout>
+					<hlayout>
+						<label value="訂購商家: " />
+						<combobox autodrop="true" model="@load(vm.shopListModel)" selectedItem="@bind(vm.schedule.theShopOfDay)"
+							constraint="no empty" placeholder="請選擇商家" maxlength="30" vflex="true">
+							<template name="model" var="shop">
+								<comboitem label="@load(shop.s_name)" />
+							</template>
+						</combobox>
+					</hlayout>
+					<hlayout>
+						<label value="開始日期: " />
+						<datebox width="100%" value="@bind(vm.startDate)" format="yyyy-MM-dd HH:00" lenient="false" compact="false" buttonVisible="true" />
+					</hlayout>
+					<hlayout>
+						<label value="結束日期: " />
+						<datebox width="100%" value="@bind(vm.endDate)" constraint="@load(vm.constraintDate)" format="yyyy-MM-dd HH:00" lenient="false" compact="false" buttonVisible="true" />
+					</hlayout>
+				</vlayout>
+			</hlayout>
+			<hlayout>
+				<button label="新增" class="btn btn-success" onClick="@command('addSchedule')"/>
+				<button label="取消" class="btn btn-danger" onClick="@command('close')" />
+			</hlayout>
+
+		</vlayout>
+
+	</window>
+</zk>

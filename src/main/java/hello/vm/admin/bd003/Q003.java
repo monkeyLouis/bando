@@ -8,16 +8,23 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.zkoss.bind.BindUtils;
 import org.zkoss.bind.annotation.BindingParam;
 import org.zkoss.bind.annotation.Command;
+import org.zkoss.bind.annotation.GlobalCommand;
 import org.zkoss.bind.annotation.Init;
 import org.zkoss.bind.annotation.NotifyChange;
+import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.select.annotation.VariableResolver;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zkplus.spring.DelegatingVariableResolver;
 import org.zkoss.zul.ListModelList;
+import org.zkoss.zul.Messagebox;
 
 import hello.domain.Food;
 import hello.domain.OrderDetail;
@@ -107,6 +114,13 @@ public class Q003 {
 		
 		return result;
 	}
+	
+	@GlobalCommand
+	@NotifyChange("scheduleList")
+	public void refreshScheduleListAll() {
+		scheduleList.clear();
+		scheduleList.addAll(scheduleSrvc.findAll());
+	}
 
 	public Date getDateSelected() {
 		return dateSelected;
@@ -156,4 +170,65 @@ public class Q003 {
 		this.bookerList = bookerList;
 	}
 	
+	@Command
+	public void addSchel(){
+		Executions.createComponents("~./zul/admin/bd003/a003.zul", null, null);
+	}
+	
+	@Command
+	public void deleteSchedule(@BindingParam("schedule") Schedule target){
+		StringBuffer sb = new StringBuffer();
+		sb.append("確認刪除訂購行程:\n 訂購商家: ")
+		  .append(target.getTheShopOfDay().getS_name())
+		  .append("\n開始時間: ")
+		  .append(timeStr(target.getStartDate()))
+		  .append("\n結束時間: ")
+		  .append(timeStr(target.getEndDate()));
+		Messagebox.show(sb.toString(), "刪除訂購行程", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION,
+		        new EventListener<Event>() {
+			        @Override
+			        public void onEvent(Event evt) throws Exception {
+				        try {
+					        if ((Messagebox.ON_OK).equals(evt.getName())) {
+//					        	food.setShop(shop);
+//					        	food.setF_count_acc(0);
+//					        	food.setF_on(1);
+					        	target.setStatus("1");
+					        	scheduleSrvc.saveSchedule(target);
+					        	
+					        	refreshScheduleListAll();
+					        	
+					        	Messagebox.show("刪除成功", "系統訊息", Messagebox.OK , Messagebox.INFORMATION, new EventListener<Event>() {
+					        		@Override
+					        		public void onEvent(Event evt) throws Exception {
+					        			try {
+					        				if ((Messagebox.ON_OK).equals(evt.getName())) {
+					        				}
+					        			} catch (Exception e) {
+					        				LOG.error("returnEquiment", e);
+					        			}
+					        		}
+					        	});
+					        }
+				        } catch (Exception e) {
+					        LOG.error("returnEquiment", e);
+				        }
+			        }
+		        });
+	}
+	
+	private String timeStr(Date date) {
+		DateTime datetime = new DateTime(date);
+		StringBuilder sb = new StringBuilder();
+		sb.append(datetime.getYear())
+		  .append("年")
+		  .append(datetime.getMonthOfYear())
+		  .append("月")
+		  .append(datetime.getDayOfMonth())
+		  .append("日 ")
+		  .append(datetime.getHourOfDay())
+		  .append(":")
+		  .append(datetime.getMinuteOfHour());
+		return sb.toString();
+	}
 }

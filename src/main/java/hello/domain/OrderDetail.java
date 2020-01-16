@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,15 +19,20 @@ public class OrderDetail implements Serializable {
 //	private OrderDetailId odId;
 	
 	@Id
-	@Column(name="OMID")
+	@ManyToOne
+	@JoinColumn(name="OMID", nullable=false)
 	private OrderMaster omId;
 	
 	@Id
-	@Column(name="FOODID")
+	@ManyToOne
+	@JoinColumn(name="FOODID", nullable=false)
 	private Food foodId;
 	
 	@Column(name="ODQUA")
 	private Integer odQua;
+	
+	@Column(name="ODREMARK")
+	private String odRemark;
 	
 //	public OrderDetailId getOdId() {
 //		return odId;
@@ -57,6 +64,14 @@ public class OrderDetail implements Serializable {
 
 	public void setFoodId(Food foodId) {
 		this.foodId = foodId;
+	}
+
+	public String getOdRemark() {
+		return odRemark;
+	}
+
+	public void setOdRemark(String odRemark) {
+		this.odRemark = odRemark;
 	}
 	
 }

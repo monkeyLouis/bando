@@ -1,40 +1,394 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/layout">
 	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
 		<title>Layout</title>
 	</head>
 
 	<body>
-		<section layout:fragment="content">
-	    	<div class="row">
-				<table class="table table-hover" border="2px">
-					<caption style="font-size:30px">Member List</caption>
-					<thead>
-						<tr>
-							<th style="text-align: center">Account</th>
-							<th style="text-align: center">Password</th>
-							<th style="text-align: center">Name</th>
-							<th style="text-align: center">Auth</th>
-							<th style="text-align: center">Edit</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="data" th:each="member:${list}" style="text-align: center">
-							<td><h5 name="memId" th:text="${member.memId}">A</h5></td>
-							<td><h5 name="memPwd" th:text="${member.memPwd}">B</h5><h6 id="memPwdErr"></h6></td>
-							<td><h5 name="memName" th:text="${member.memName}">C</h5><h6 id="memNameErr"></h6></td>
-							<td th:each="auth:${member.userRole}"><h5 name="userRole" th:text="${auth.role}">D</h5><h6 id="memAuthErr"></h6></td>
-							<td><button type="button" class="btn btn-danger btn-edit">Edit</button></td>
-						</tr>
-					</tbody>
-				</table>
+		<div layout:fragment="content">
+	    	<div class="container" id="omVm">
+	    		<div class="row">
+	    			<div class="col-sm-offset-2 col-sm-8">
+		    			<div class="panel panel-default order-panel">
+							<div class="panel-body" style="padding: 15px 30px">
+								<div class="row">
+									<div class="col-sm-offset-1 col-sm-10">
+										<div class="form-inline">
+											<div class="form-group">
+												<label for="time">訂購年月：</label>
+												<input v-model="queryParam.yearAndMonth" type="text" class="form-control" maxlength="6" style="width: 60%" placeholder="西元年月 (201907)">
+											</div>
+											<div class="form-group">
+												<label for="status">狀態：</label>
+												<select v-model="queryParam.payStatus" class="form-control">
+							  						<option value="">全部</option>
+							  						<option value="0">未付款</option>
+							  						<option value="1">已付款</option>
+							  					</select> 
+											</div>
+											<span>&nbsp;&nbsp;</span>
+											<button class="btn btn-success" @click="query()">查詢</button>
+										</div>
+									</div>
+						  		</div>
+							</div>
+						</div>
+					</div>
+					<div class="container">
+						<div class="row">
+							<div class="col-sm-offset-2 col-sm-8">
+								<div class="panel panel-success">
+									<div class="panel-heading omHeading">
+										<div class="row panel-title">
+											<div class="col-sm-4 panel-th">
+												<span>訂購時間</span>
+											</div>
+											<div class="col-sm-3 panel-th">
+												<span>訂購商家</span>
+											</div>
+											<div class="col-sm-2 panel-th">
+												<span>金額</span>
+											</div>
+											<div class="col-sm-2 panel-th">
+												<span>付款狀態</span>
+											</div>
+											<div class="col-sm-1" style="padding: 10px;font-weight: 1000">
+												<span>操作</span>
+											</div>
+										</div>
+									</div>				
+									<div class="panel-body omTableBody" style="padding: 0px">
+										<template v-if="hasData">
+											<div class="panel-group" id="accordion" style="margin-bottom: 0px">
+												<om-row v-for="om in contents"
+													   v-bind:om="om"
+													   v-bind:key="om.omId"
+													   @del="deleteOm(om)">
+												</om-row>
+											</div>
+										</template>
+										<template v-else>
+											<div style="padding:50px">
+												<img style="width:30%;display: block;margin-left: auto;margin-right: auto;" th:src="@{/img/no_result.png}">
+												<h4 style="text-align:center; color:#bbb"><strong>Oops...查無資料</strong></h4>
+											</div>
+										</template>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-offset-2 col-sm-8" v-if="needPagination">
+		    			<div class="panel panel-default">
+							<div class="panel-body" style="padding: 15px 30px; text-align: center">
+								<span @click="prepage" class="glyphicon glyphicon-chevron-left" style="cursor: pointer"></span>
+								<input type="text" v-model="currentPage" size="2">
+								<span> / {{ totalPage }} 頁，共 {{ totalSize }} 筆資料</span>
+								<span @click="nextpage" class="glyphicon glyphicon-chevron-right" style="cursor: pointer"></span>
+							</div>
+						</div>
+					</div>
+	    		</div>
+	    	</div>
+		</div>
+		
+		<div layout:fragment="header">
+
+		<!-- Modal -->
+		<div id="deleteOm" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header" style="background-color:red">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" style="color: #fff">退單確認</h4>
+					</div>
+					<div class="modal-body">
+						<h4>請確認以下退單資訊</h4>
+						<div style="padding: 0 20px">
+							<table class="table table-bordered">
+								<tr>
+									<th style="text-align: right">訂購時間</th>
+									<td>{{ orderDate }}</td>
+								</tr>
+								<tr>
+									<th style="text-align: right">訂購商家</th>
+									<td>{{ shopName }}</td>
+								</tr>
+								<tr>
+									<th style="text-align: right">總額</th>
+									<td>{{ price }}</td>
+								</tr>
+								<tr>
+									<th style="text-align: right">狀態</th>
+									<td>{{ statusName }}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" @click="delOm()">退單</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					</div>
+				</div>
 			</div>
-		</section>
+		</div>
+
+		</div>
+		<th:block layout:fragment="script">
+		<script>
+			var hasOwnProperty = Object.prototype.hasOwnProperty;
+	
+			function isEmpty(obj) {
+	
+			    // null and undefined are "empty"
+			    if (obj == null) return true;
+			    
+			    // Assume if it has a length property with a non-zero value
+			    // that that property is correct.
+			    if (obj.length > 0)    return false;
+			    if (obj.length === 0)  return true;
+	
+			    // If it isn't an object at this point
+			    // it is empty, but it can't be anything *but* empty
+			    // Is it empty?  Depends on your application.
+			    if (typeof obj !== "object") return true;
+	
+			    // Otherwise, does it have any properties of its own?
+			    // Note that this doesn't handle
+			    // toString and valueOf enumeration bugs in IE < 9
+			    for (var key in obj) {
+			        if (hasOwnProperty.call(obj, key)) return false;
+			    }
+	
+			    return true;
+			}
 		
-		<section layout:fragment="header">
-			<h1>This Text is in the content.html</h1>
-		</section>
+			var odRow =  {
+				props:['food'],
+				template: `
+					<tr>
+						<td>{{ food.foodName }}</td>
+						<td>{{ food.count }}</td>
+						<td>{{ food.price }}</td>
+					</tr>
+				`
+			}
 		
+			var omRow = {
+				props: ['om'],
+				template:`
+					<div class="panel panel-warning panel-tr">
+						<div class="panel-heading omHeading">
+							<div class="row panel-title" data-toggle="collapse" data-parent="#accordion" :href="collapseHref">
+								<div class="col-sm-4 panel-td">
+									<span>{{ om.orderDate }}</span>
+								</div>
+								<div class="col-sm-3 panel-td">
+									<span>{{ om.shopName }}</span>
+								</div>
+								<div class="col-sm-2 panel-td">
+									<span>{{ '$ ' + om.price }}</span>
+								</div>
+								<div class="col-sm-2 panel-td">
+									<i v-if="isPaid"><span class="glyphicon glyphicon-ok" style="color: green"></span><span>已付款</span></i>
+									<i v-else><span class="glyphicon glyphicon-remove" style="color: red"></span><span>未付款</span></i>
+								</div>
+								<div class="col-sm-1" style="padding:5px">
+									<button v-if="om.returnable" type="submit" class="btn btn-danger btn-sm" v-on:click.stop.prevent="$emit('del')">退單</button>
+								</div>
+							</div>
+						</div>
+						<div :id="collapseId" class="panel-collapse collapse">
+							<div class="panel-body" style="padding: 0px">
+								<table class="table table-hover" style="margin-bottom: 0px">
+									<thead>
+										<tr>
+											<th>商品名稱</th>
+											<th>數量</th>
+											<th>總價</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr is="od-row"
+											v-for="(food,index) in om.foods"
+											v-bind:key="index"
+											v-bind:food="food">
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				`,
+				computed: {
+					collapseId: function() {
+						return "collapse-"+this.om.omId;
+					},
+					collapseHref: function() {
+						return "#collapse-"+this.om.omId;
+					},
+					isPaid: function() {
+						return this.om.status == 1;
+					}
+				},
+				components: {
+					'od-row': odRow
+				}
+			}
+			
+			var omVm = new Vue({
+				el: "#omVm",
+				data: {
+					queryParam: {
+						payStatus: "",
+						yearAndMonth: ""
+					},
+					currentPage: 1,
+					contents: [],
+					totalPage: 0,
+					totalSize: 0
+				},
+				components: {
+					'om-row': omRow
+				},
+				methods: {
+					init: function() {
+						var baseUrl = "[[@{/order/}]]"
+							var url = baseUrl + (this.currentPage-1);
+							var param = this.$data.queryParam;;
+							axios.post(url, param)
+								 .then(function(response) {
+									 console.log(response);
+									 if(response.data.status == 0 ) {
+										 omVm.contents = response.data.data.contents;
+										 omVm.totalPage = response.data.data.totalPage;
+										 omVm.totalSize = response.data.data.totalSize;
+									 } else if(response.data.status == 3) {
+										 omVm.contents = [];
+									 } else {
+										 errorModal.alert(response.data.message);
+									 }
+								 })
+								 .catch(function(error) {
+									window.setTimeout(( () => errorModal.alert("網路問題，請稍後再試") ), 100);
+									console.log(error);
+								 })
+					},
+					query: function() {
+						var baseUrl = "[[@{/order/}]]"
+						var url = baseUrl + (this.currentPage-1);
+						var param = this.$data.queryParam;
+						axios.post(url, param)
+							 .then(function(response) {
+								 console.log(response);
+								 if(response.data.status == 0 ) {
+									 errorModal.alert("查詢成功");
+									 omVm.contents = response.data.data.contents;
+									 omVm.totalPage = response.data.data.totalPage;
+									 omVm.totalSize = response.data.data.totalSize;
+								 } else if(response.data.status == 3) {
+									 errorModal.alert("查無資料");
+									 omVm.contents = []
+								 } else {
+									 errorModal.alert(response.data.message);
+								 }
+							 })
+							 .catch(function(error) {
+								 errorModal.alert("網路問題，請稍後再試");
+								 console.log(error);
+							 })
+					},
+					nextpage: function() {
+						this.currentPage++;
+					},
+					prepage: function() {
+						this.currentPage--;
+					},
+					deleteOm: function(om) {
+						delOm.omId = om.omId;
+						delOm.orderDate = om.orderDate;
+						delOm.price = om.price;
+						delOm.shopName = om.shopName;
+						delOm.status = om.status;
+						delOm.open();
+					}
+				},
+				created: function() {
+					this.init();
+				},
+				computed: {
+					hasData: function() {
+						return !isEmpty(this.contents);
+					},
+					needPagination: function() {
+						return this.totalSize > 10;
+					}
+				},
+				watch: {
+					currentPage: function(newVal, oldVal) {
+						if (newVal > this.totalPage) {
+							this.currentPage = oldVal;
+							return;
+						}
+						if (newVal < 1) {
+							this.currentPage = 1;
+							return;
+						}
+						this.init();
+					}
+				},
+			});
+			
+			var delOm = new Vue({
+				el: "#deleteOm",
+				data: {
+					omId: "",
+					orderDate: "",
+					price: "",
+					shopName: "",
+					status: ""
+				},
+				methods: {
+					open: function() {
+						$("#deleteOm").modal();
+					},
+					delOm: function() {
+						var url = "[[@{/order/}]]";
+						var fullUrl = url + this.omId;
+						axios.delete(fullUrl)
+							 .then(function(response){
+								 $("#deleteOm").modal('hide');
+								 if (response.data.status == 0) {
+									 window.setTimeout(( () => errorModal.alert("退單成功") ), 150);
+									 omVm.init();
+								 } else {
+									 window.setTimeout(( () => errorModal.alert(response.data.message) ), 150);
+								 }
+							 })
+							 .catch(function(error) {
+								 window.setTimeout(( () => errorModal.alert("網路問題，請稍後再試") ), 100);
+								 console.log(error);
+							 })
+					}
+				},
+				computed: {
+					statusName: function() {
+						if(this.status == 0) {
+							return "未付款";
+						}
+						if(this.status == 1) {
+							return "已付款";
+						}
+					}
+				}
+			})
+		
+		</script>
+		</th:block>
 	</body>
 	
 </html>

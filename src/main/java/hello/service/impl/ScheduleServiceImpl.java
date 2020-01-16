@@ -3,6 +3,7 @@ package hello.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -10,6 +11,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import hello.domain.Schedule;
+import hello.enums.PayStatus;
 import hello.repository.ScheduleRepository;
 import hello.service.ScheduleService;
 import hello.util.DateUtil;
@@ -25,6 +28,7 @@ import hello.util.DateUtil;
 @Service("scheduleSrvc")
 public class ScheduleServiceImpl implements ScheduleService {
 	
+	private static final String STATUS = "status";
 	private static final String STARTDATE = "startDate";
 	private static final String ENDDATE = "endDate";
 	private static Logger LOG = LoggerFactory.getLogger(ScheduleServiceImpl.class);
@@ -36,11 +40,15 @@ public class ScheduleServiceImpl implements ScheduleService {
 	@Transactional(readOnly = true)
 	public List<Schedule> findAll() {
 		List<Schedule> result = scheduleRepository.findAllByOrderByEndDateDesc();
+		result = result.stream()
+					   .filter(sche -> StringUtils.equals(sche.getStatus(), "0"))
+					   .collect(Collectors.toList());
 		result.forEach(r -> LOG.info("The num of list : {}", r.getOrderMasterListOfDay().size()));
 		return this.calculateTotalPriceAndTotalQuantity(result);
 	}
 	
 	@Override
+	@Transactional(readOnly = true)
 	public List<Schedule> findByDate(Date date) {
 		Date dateStart = DateUtil.getDayStart(date);
 		Date dateEnd = DateUtil.getNextDayStart(date);
@@ -49,7 +57,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 	
 	@Override
 	public List<Schedule> findByDate(Date dateStart, Date dateEnd) {
-		return scheduleRepository.findAll((Root<Schedule> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
+		List<Schedule> result = scheduleRepository.findAll((Root<Schedule> root, CriteriaQuery<?> query, CriteriaBuilder cb) -> {
 			List<Predicate> predicates = new ArrayList<>();
 			
 			// 加入複合條件
@@ -66,6 +74,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 			}
 			return cb.conjunction();
 		});
+		result.forEach(r -> LOG.info("The num of list : {}", r.getOrderMasterListOfDay().size()));
+		return calculateTotalPriceAndTotalQuantity(result);
 	}
 	
 	@Override
@@ -84,9 +94,11 @@ public class ScheduleServiceImpl implements ScheduleService {
 			// 加入複合條件
 			Path<Date> scheduleStartDate = root.get(STARTDATE);
 			Path<Date> scheduleEndDate = root.get(ENDDATE);
+			Path<Date> scheduleStatus = root.get(STATUS);
 			
 			predicates.add(cb.lessThan(scheduleStartDate, dateStart));
 			predicates.add(cb.greaterThanOrEqualTo(scheduleEndDate, dateEnd));
+			predicates.add(cb.equal(scheduleStatus, "0"));
 			
 			query.orderBy(cb.desc(root.get(ENDDATE)));
 			
@@ -112,4 +124,8 @@ public class ScheduleServiceImpl implements ScheduleService {
 		return list;
 	}
 	
+	public Schedule saveSchedule(Schedule schedule) {
+		return scheduleRepository.save(schedule);
+	}
+
 }

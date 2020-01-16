@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -43,11 +43,8 @@ public class OrderMaster implements Serializable {
 	@Column(name="OMSTATUS")
 	private Integer omStatus;
 	
-	@Column(name="OMREMARK")
-	private String omRemark;
-	
-	@OneToMany(mappedBy="omId", targetEntity=OrderDetail.class)
-	@LazyCollection(LazyCollectionOption.TRUE)
+	@OneToMany(mappedBy="omId", targetEntity=OrderDetail.class, cascade = CascadeType.ALL)
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<OrderDetail> odList;
 	
 	@Transient
@@ -85,14 +82,6 @@ public class OrderMaster implements Serializable {
 		this.omStatus = omStatus;
 	}
 
-	public String getOmRemark() {
-		return omRemark;
-	}
-
-	public void setOmRemark(String omRemark) {
-		this.omRemark = omRemark;
-	}
-
 	public List<OrderDetail> getOdList() {
 		return odList;
 	}
@@ -124,7 +113,6 @@ public class OrderMaster implements Serializable {
 		result = prime * result + ((member == null) ? 0 : member.hashCode());
 		result = prime * result + ((omDate == null) ? 0 : omDate.hashCode());
 		result = prime * result + ((omId == null) ? 0 : omId.hashCode());
-		result = prime * result + ((omRemark == null) ? 0 : omRemark.hashCode());
 		result = prime * result + ((omStatus == null) ? 0 : omStatus.hashCode());
 		return result;
 	}
@@ -152,11 +140,6 @@ public class OrderMaster implements Serializable {
 			if (other.omId != null)
 				return false;
 		} else if (!omId.equals(other.omId))
-			return false;
-		if (omRemark == null) {
-			if (other.omRemark != null)
-				return false;
-		} else if (!omRemark.equals(other.omRemark))
 			return false;
 		if (omStatus == null) {
 			if (other.omStatus != null)

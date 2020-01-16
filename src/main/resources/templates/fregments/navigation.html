@@ -15,21 +15,22 @@
         		</div>
         		<ul class="nav navbar-nav">
       				<li><a th:href="@{/index}">訂便當</a></li>
-      				<li><a th:href="@{/member/showAll}">訂購紀錄</a></li>
+      				<li><a th:href="@{/records}">訂購紀錄</a></li>
      			</ul>
      			<ul class="nav navbar-nav navbar-nav-custom navbar-right">
+					<li>
+						<a href="javascript:openCart()" class="glyphicon glyphicon-shopping-cart" style="font-size: 20px"></a>
+					</li>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Hello <span id="nav-name">[[${#authentication.principal.name}]]</span></a>
 						<ul class="dropdown-menu">
 							<li><a href="javascript: openMemModal()">修改會員資料</a></li>
 							<li class="divider"></li>
-							<li><a href="/logout">登出</a></li>
+							<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> 登出</a></li>
 						</ul>
 					</li>
   				</ul>
     		</div>
 		</nav>
 	</body>
-
-
 </html>
