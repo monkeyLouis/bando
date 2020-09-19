@@ -36,14 +36,15 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: wooya617@gmail.com
-    password: Iamwooya@gmail
+    password: password
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-  messages:    basename: messages
+  messages:
+    basename: messages
     encoding: UTF-8
     cache-duration: 1800
 
