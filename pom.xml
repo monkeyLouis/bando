@@ -18,7 +18,7 @@
 		<zk.version>8.5.1.2-Eval</zk.version>
 		<zats.version>2.0.0</zats.version>
 		<junit.version>4.12</junit.version>
-		<commons-io.version>2.6</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 	</properties>
 
 	<!-- ZK Repository -->
